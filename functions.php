@@ -665,7 +665,9 @@ function takelage_register_post_type_feature() {
         'capability_type'     => 'post'
     );
     register_post_type( 'feature', $args );
+    flush_rewrite_rules(false);
 }
+
 
 /*------------------------------------------------------------------------------
 	Add Body Classes
