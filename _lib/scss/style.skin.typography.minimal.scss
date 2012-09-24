@@ -30,7 +30,9 @@ h1,h2,h3, .nav-main li > a, .nav-meta li a   { font-family: $display; }
 .siteinfo, small, .caption, figcaption       { font-family: $caption; }
 pre, code, kbd, samp                         { font-family: $code; }
 
-
+blockquote:before {
+	font-family: $display;
+}
 
 .cta .widget {
 	font-family: $display;

@@ -26,6 +26,8 @@ h1, h2, h3, .nav-main li > a, .nav-meta li a { font-family: cubano, helvetica, a
 
 pre, code, kbd, samp { font-family: "Menlo", "Bitstream Vera Sans", Monaco, "Andale Mono", "Lucida Console", "Droid Mono", monospace; }
 
+blockquote:before { font-family: cubano, helvetica, arial, helvetica, sans-serif; }
+
 .cta .widget { font-family: cubano, helvetica, arial, helvetica, sans-serif; -webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg); -ms-transform: rotate(-5deg); -o-transform: rotate(-5deg); transform: rotate(-5deg); -webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -ms-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out; }
 .cta .widget:hover { -webkit-transform: rotate(0); -moz-transform: rotate(0); -ms-transform: rotate(0); -o-transform: rotate(0); transform: rotate(0); -webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -ms-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out; }
 .cta .widget a { -webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -ms-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out; text-shadow: 2px 2px 0 #fff, 3px 3px 0 #000; }
