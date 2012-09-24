@@ -515,7 +515,8 @@ endif;
 
 
 /*	Generate breadcrumbs
-------------------------------------------------------------------------------
+------------------------------------------------------------------------------*/
+/*
 
 if ( ! function_exists( 'Takelage_breadcrumb' ) ) :
 function Takelage_breadcrumb() {
@@ -663,11 +664,7 @@ function takelage_register_post_type_feature() {
         'menu_position'       => 5,
         'capability_type'     => 'post'
     );
-
-
-     flush_rewrite_rules( false );
     register_post_type( 'feature', $args );
-
 }
 
 /*------------------------------------------------------------------------------
