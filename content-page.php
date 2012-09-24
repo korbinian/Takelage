@@ -15,7 +15,6 @@
 	</div>
 
 	<footer class="entry-footer postmetadata">
-		<?php edit_post_link('editieren','',' '); ?>
 	</footer>
 
 </article>

@@ -6,7 +6,6 @@
 
 	<footer class="entry-footer postmetadata">
 		<?php Takelage_posted_on() ?>
-		<?php edit_post_link('editieren','',' '); ?>
 	</footer>
 
 </article>

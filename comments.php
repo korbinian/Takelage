@@ -4,11 +4,7 @@
 		return;
 ?>
 
-
-
 <div id="comments" class="comments-area group">
-
-
 
 <?php if ( have_comments() ) : ?>
 	<div class="comments-title">
