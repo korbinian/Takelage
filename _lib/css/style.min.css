@@ -536,4 +536,4 @@ body[role="homepage"] { -webkit-animation: fadeIn .5s 0s ease-in both; -moz-anim
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; } }
-* { color: red; color: blue; }
+* { color: orange; }
