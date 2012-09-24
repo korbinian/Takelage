@@ -274,7 +274,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { color: #
 @media (min-width: 720px) { #main #content article .nav-sub { float: right; width: 18.5em; margin-top: 0; margin-right: -20em; } }
 @media (min-width: 960px) { #main #content article .nav-sub { float: left; margin-left: -20em; }
   #main #content article .nav-sub a { text-align: right; } }
-@media (min-width: 720px) { #main #aside { display: block; float: left; width: 20em; } }
+#main #aside { display: block; float: left; width: 20em; }
 
 /* Full-width
 ----------------------------------------------------------------------------- */

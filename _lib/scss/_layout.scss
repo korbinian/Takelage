@@ -51,7 +51,8 @@ html {
           a { text-align: right; } } } } }
   #aside {
     @extend .group;
-    @media (min-width: 720px) { @include col(4); } } }
+    @include col(4);
+    @media (min-width: 720px) {  } } }
 
 /* Full-width
 ----------------------------------------------------------------------------- */
