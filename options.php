@@ -93,18 +93,6 @@ function optionsframework_options() {
 		'name' => __('Styles', 'Takelage'),
 		'type' => 'heading');
 
-	
-$dev_stylesheet = options_stylesheets_get_file_list(
-    get_stylesheet_directory() . '/_lib/css/skins/dev/', // $directory_path
-    'css', // $filetype
-    get_stylesheet_directory_uri() . '/_lib/css/skins/dev/' // $directory_uri
-);
-$options[] = array( "name" => "Development Stylesheet",
-    "desc" => '"_lib/css/skins/dev"',
-    "id" => "dev_stylesheet",
-    "type" => "select",
-    'class' => 'mini',
-    "options" => $dev_stylesheet );
 
 $color_stylesheet = options_stylesheets_get_file_list(
     get_stylesheet_directory() . '/_lib/css/skins/colors/', // $directory_path

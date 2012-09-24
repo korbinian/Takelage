@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div id="content" class="skin" role="main">
+<div id="content" role="main">
 
 	<article id="post-0" class="post no-results not-found">
 	<header class="entry-header">

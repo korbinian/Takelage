@@ -9,12 +9,10 @@
   background-color: transparent;
   border: 0; }
 
-
 .skin {
   display: block;
-  padding: $ratio/2; }
+  @include box(); }
 
 .group {
   float: left;
-  width: 100%;
-}
+  width: 100%; }

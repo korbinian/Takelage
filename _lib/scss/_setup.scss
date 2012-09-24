@@ -23,26 +23,13 @@ $ratio: 1.5em;
   $container-columns: container-span($span);
     display: block;
     float: left;
-    width: $columns * $col;
-}
-
-
-
+    width: $columns * $col; }
 @mixin box () {
-  padding: $padding;
-}
-
+  padding: $padding; }
 @mixin shift($n-columns: 1) {
   margin-left: $n-columns * $col; }
-
 @mixin full() {
-  width: 100%;
-}
-
-
-// MIXINS
-// ======
-
+  width: 100%; }
 @mixin prefix-property($property, $value, $supportWebkit: true, $supportFirefox: true, $supportExplorer: true, $supportOpera: true ) {
   @if $supportWebkit   { -webkit-#{$property}: $value; }
   @if $supportFirefox  {    -moz-#{$property}: $value; }

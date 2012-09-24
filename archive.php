@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div id="content" class="skin" role="main">
+<div id="content" role="main">
 
 	<?php if (function_exists('Takelage_breadcrumb')) { Takelage_breadcrumb(); } ?>
 

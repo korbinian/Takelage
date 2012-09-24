@@ -48,7 +48,6 @@
 
  @media (min-width: 720px) { 
  	.back { display: none !important; }
-
  }
 
 /* Skiplinks
@@ -332,14 +331,8 @@ ul.skiplinks {
 	float: left;
 	width: 100%; }
 
-
-
 /* Article
 ------------------------------------------------------------------------------*/
-
-article {
-
-}
 
 .author-info {
   float: left;
@@ -418,27 +411,22 @@ article {
 
 li.bypostauthor article {
 	border :2px solid;
-	padding: $ratio;
-}
+	padding: $ratio; }
 
 ul li:before {
-	content: "" !important;
-}
+	content: "" !important; }
 
 .comment-reply-link {
-	display: inline;
-}
+	display: inline; }
 
 .comment-meta a {
-	border: 0 solid;
-}
+	border: 0 solid; }
 
 .pingback {
 	float: left;
 	display: block;
 	width: 100%;
-	margin-bottom: $ratio;
-}
+	margin-bottom: $ratio; }
 
 #respond {
 	#commentform {
@@ -584,28 +572,4 @@ ul li:before {
 .newslist {
 	@include box();
 	* {
-		margin-bottom: 0;
-	}
-}
-
-.newslist h2 {
-	margin: 0;
-}
-
-/* Fade In Frontpage
-------------------------------------------------------------------------------*/
-/*
-
-@-webkit-keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
-   @-moz-keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
-    @-ms-keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
-     @-o-keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
-        @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
-
-
-body[role="homepage"] {
-  -webkit-animation: fadeIn .5s 0s ease-in both;
-     -moz-animation: fadeIn .5s 0s ease-in both;
-      -ms-animation: fadeIn .5s 0s ease-in both;
-       -o-animation: fadeIn .5s 0s ease-in both;
-          animation: fadeIn .5s 0s ease-in both; } */
+		margin-bottom: 0; } }

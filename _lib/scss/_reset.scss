@@ -28,9 +28,13 @@ body {
 	margin: 0; }
 
 ::-moz-selection { 
-	text-shadow: none;  }
+	text-shadow: none;
+  background: #000;
+  color: #fff;  }
 ::selection { 
-	text-shadow: none;  }
+	text-shadow: none;
+  background: #000;
+  color: #fff;  }
 
 * { 
 	@include box-sizing(border-box);}
