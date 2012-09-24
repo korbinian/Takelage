@@ -516,7 +516,6 @@ endif;
 
 /*	Generate breadcrumbs
 ------------------------------------------------------------------------------*/
-/*
 
 if ( ! function_exists( 'Takelage_breadcrumb' ) ) :
 function Takelage_breadcrumb() {
@@ -582,7 +581,7 @@ function Takelage_breadcrumb() {
   }
  echo '</div>';
 }
-endif; */
+endif;
 
 /*------------------------------------------------------------------------------
 	Add Language Support
@@ -650,7 +649,7 @@ function takelage_register_post_type_feature() {
         'labels'              => $labels,
         'hierarchical'        => true,
         'description'         => __( 'Post Type for Featured Posts', 'Takelage' ),
-        'supports'            => array( 'title', 'thumbnail', 'editor','post-thumbnails', ),
+        'supports'            => array( 'title', 'editor', 'author',   'thumbnail', 'post-thumbnails', 'excerpt', 'trackbacks', 'custom-fields', 'comments','revisions','page-attributes'  ),
         'public'              => true,
         'show_ui'             => true,
         'show_in_menu'        => true,
@@ -664,8 +663,17 @@ function takelage_register_post_type_feature() {
         'menu_position'       => 5,
         'capability_type'     => 'post'
     );
+
     register_post_type( 'feature', $args );
+
     flush_rewrite_rules(false);
+}
+
+
+
+add_action('init','add_categories_to_cpt');
+function add_categories_to_cpt(){
+    register_taxonomy_for_object_type('category', 'feature');
 }
 
 
