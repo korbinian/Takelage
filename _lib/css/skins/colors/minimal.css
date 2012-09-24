@@ -2,9 +2,15 @@
 
 ::selection { color: white; background: black; }
 
+a { color: black; }
+
 body { background: #ff8800; }
 
-#content { background: white; }
+#main { background: white; }
+
+#sub { background: #4d004d; color: #fff; }
+
+#footer { background: #1a001a; color: white; }
 
 .nav-main li a { background: white; }
 .nav-main li .sub-menu { background: white; }

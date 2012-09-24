@@ -21,15 +21,27 @@ $muted:            #6F6F6F;
 	color:invert($color-selection);
 	background: $color-selection; }
 
+a {
+	color: $black;
+}
 
 body {
 	background: $orange;
 }
 
-#content {
+#main {
 	background: $white;
 }
 
+#sub {
+	background: $color-secondary;
+	color: #fff;
+}
+
+#footer {
+	background: darken($color-secondary, 10%);
+	color: $white;
+}
 
 .nav-main {
 	li {
