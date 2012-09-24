@@ -2,5 +2,9 @@
 
 ::selection { color: white; background: black; }
 
+body { background: #ff8800; }
+
+#content { background: white; }
+
 .nav-main li a { background: white; }
 .nav-main li .sub-menu { background: white; }
