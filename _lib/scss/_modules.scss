@@ -91,6 +91,7 @@ ul.skiplinks {
   .logo {
     position: absolute;
     top: $ratio/2;
+    height: $unit;
     @include col(1); }
   hgroup {
     margin: $ratio 0 $ratio 0;
@@ -104,9 +105,10 @@ ul.skiplinks {
 
 .banner {
 	@include col(8);
-	margin-top: 2*$ratio;
+	margin-top: $ratio;
   .logo {
-    top: -$ratio/2;
+    top: -$ratio;
+    height: 2*$unit;
     @include box();
     @include col(2); }
   hgroup {
@@ -118,8 +120,10 @@ ul.skiplinks {
 @media (min-width: 960px)  { 
 
 .banner {
+	margin-top: 2*$ratio;
   .logo {
   	top: -$ratio*2;
+  	height: 3*$unit;
   	@include col(3);
   	@include shift(-3); }
   hgroup {

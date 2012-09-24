@@ -317,14 +317,15 @@ body.fullwidth #main #content { width: 100%; }
 /* Banner
 ----------------------------------------------------------------------------- */
 .banner .logo-link { border: 0 solid; }
-.banner .logo { position: absolute; top: 0.75em; display: block; float: left; width: 5em; }
+.banner .logo { position: absolute; top: 0.75em; height: 5em; display: block; float: left; width: 5em; }
 .banner hgroup { margin: 1.5em 0 1.5em 0; margin-left: 5em; padding-left: 0.75em; }
 .banner hgroup a { display: inline-block !important; border: 0 solid; }
 
-@media (min-width: 720px) { .banner { display: block; float: left; width: 40em; margin-top: 3em; }
-  .banner .logo { top: -0.75em; padding: 0.75em; display: block; float: left; width: 10em; }
+@media (min-width: 720px) { .banner { display: block; float: left; width: 40em; margin-top: 1.5em; }
+  .banner .logo { top: -1.5em; height: 10em; padding: 0.75em; display: block; float: left; width: 10em; }
   .banner hgroup { margin: 1.5em 0 1.5em 0; margin-left: 10em; } }
-@media (min-width: 960px) { .banner .logo { top: -3em; display: block; float: left; width: 15em; margin-left: -15em; }
+@media (min-width: 960px) { .banner { margin-top: 3em; }
+  .banner .logo { top: -3em; height: 15em; display: block; float: left; width: 15em; margin-left: -15em; }
   .banner hgroup { margin-left: 0em; } }
 /* Call To Action Sticker
 ----------------------------------------------------------------------------- */
