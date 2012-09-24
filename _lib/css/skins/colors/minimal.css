@@ -1,0 +1,6 @@
+::-moz-selection { color: white; background: black; }
+
+::selection { color: white; background: black; }
+
+.nav-main li a { background: white; }
+.nav-main li .sub-menu { background: white; }

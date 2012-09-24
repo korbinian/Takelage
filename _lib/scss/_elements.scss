@@ -1,0 +1,318 @@
+/* ELEMENTS
+----------------------------------------------------------------------------- */
+
+$icons: fontawesome;
+
+/* TYPOGRAPHY
+----------------------------------------------------------------------------- */
+@import "fonts/fontawesome";
+
+body { 
+  font: normal #{1em}/#{$ratio} sans-serif; }
+
+
+
+/* Font Sizes
+----------------------------------------------------------------------------- */
+
+.xxl { @include f(48,48,24); }
+.xl  { @include f(38,48,0); }
+.l   { @include f(26,36,24); }
+.m   { @include f(16,24,24); }
+.s   { font-size: 12px; line-height: 24px; margin-bottom: 0; }
+.xs  { font-size: 10px; line-height: 24px; margin-bottom: 0; }
+.xxs { font-size: 8px;  line-height: 12px; margin-bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  @include f(16,24,12);
+  font-weight: light;
+  text-rendering: optimizelegibility; }
+
+hgroup { 
+  h1, h2 { margin: 0; } 
+  h2 { font-weight: normal;} }
+
+/* Links
+----------------------------------------------------------------------------- */
+
+a:link            { text-decoration: none;
+                    word-wrap: break-word;
+                    position: relative;
+                    border-bottom:2px solid transparent;
+                    font-weight: bold;
+                    outline: 2px solid transparent !important; }
+a:visited         { border-bottom: 2px solid}
+a:active          { top: 1px; }
+a:focus           { outline: 2px solid !important;
+                    outline: 5px auto -webkit-focus-ring-color;
+                    @include transition();
+                    outline-offset: -2px; }
+a:hover, a:active { outline: 0; }
+
+#header a {
+  display: block; }
+
+#content a {
+    &:after {
+      line-height: 0;
+      padding-right: 3px;
+      font-family: $icons; }
+    &[href$=".pdf"], &[href$=".doc"], &[href$=".dox"] { background: none;
+      &:after { content: " \f016"; } }
+    &[href$=".zip"], &[href$=".gzip"], &[href$=".dmg"], &[href$=".exe"], &[href$=".rar"], &[href$=".msi"], &[href$=".gz"] { background: none;
+      &:after { content: " \f0b1"; } }
+    &[href$=".mp3"], &[href$=".ogg"]  { background: none;
+      &:after { content: " \f001"; } }
+    &[href$=".mpg"], &[href$=".avi"], &[href$=".ogm"], &[href$=".mpeg"]  { background: none;
+      &:after { content: " \f008"; } }
+    &[href$=".jpg"], &[href$=".jpeg"], &[href$=".gif"], &[href$=".png"]  { background: none;
+      &:after { content: " \f03e"; } }
+    &[href ^="mailto:"] { background: none;
+      &:after { content: " \f003"; } }
+
+}
+ 
+/* Text Elements
+----------------------------------------------------------------------------- */
+
+p, ul, ol, dl         { @include fm(24); }
+
+ul, ol, dl            { padding: 0; float: left; width: 100%; }
+ul ul, ol ol, dl dl   { @include fm(0); }
+ul li, ol li          { margin-left: $ratio; }
+ul li                 { list-style: disc outside; }
+ol li                 { list-style: outside decimal; }
+dl dt                 { font-weight: bold; }
+dl dd                 { @include fm(24); margin-left: $ratio;}
+
+nav ul, nav ol, .nav li, nav ol {
+  margin: 0;
+  float: left;
+  width: 100%; }
+nav ul li {
+  list-style: none;
+  margin: 0; }
+
+aside, footer, header {
+  ul, ol {
+    margin: 0;
+    li {
+      list-style: none;
+      margin: 0; } } }
+
+#content {
+  ul, ol {
+    > li {
+      margin: 0;
+      position: relative;
+      list-style: none;
+      li {
+        margin-left: $ratio; } } } }
+
+#content {
+  ul {
+    > li {
+      *list-style: disc;
+      &:before {
+        content: "›";
+        position: absolute;
+        top: -3px;
+        left: -$ratio/1.7;
+        width: $ratio/2;
+        text-align: center;
+        font-size: 1.5em } } }
+  ol {
+    counter-reset: li;
+    > li {
+      *list-style: decimal;
+      &:before {
+        content: counter(li);
+        counter-increment: li;
+        position: absolute;
+        top: -1px;
+        left: -$ratio;
+        width: $ratio;
+        text-align: center; } } } }
+
+b, strong, mark { font-weight: bold; }
+em, i { font-style: italic; }
+dfn, mark { font-style: italic; }
+ins, mark { }
+
+ins { text-decoration: none; }
+del { text-decoration: line-through; }
+
+abbr, dfn {
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 1px dotted; }
+abbr[title], dfn[title] {
+  cursor: help;
+  border-bottom: 1px dotted;  }
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+hr {
+  margin: $ratio 0;
+  border: 0;
+  border-top: 1px solid #eee; }
+.amp {
+  font-family: Baskerville, 'Goudy Old Style', Palatino, 'Book Antiqua', serif;
+  font-style: italic; }
+
+
+/* Embedded content
+----------------------------------------------------------------------------- */
+
+img, embed, object, video { max-width: 100% !important; _width: 100%; }
+img { 
+  border: 0; 
+  -ms-interpolation-mode: bicubic; 
+  vertical-align: middle; 
+  height: auto;
+  @include image-rendering(); }
+
+.entry img {
+  margin: 0 $ratio $ratio 0;
+  &.left {
+    float: left; }
+  &.right { 
+    float: right; 
+    margin: 0 0 $ratio $ratio; } }
+
+svg:not(:root) { overflow: hidden; }
+
+/* Figures
+----------------------------------------------------------------------------- */
+
+figure { 
+  margin: 0; 
+  float: left; 
+  overflow: hidden;
+  img {
+    margin: 0 !important; } }
+.entry-header figure { 
+  margin-bottom: $ratio;}
+.entry figure {
+  margin: 0 $ratio $ratio 0; &.full { margin-right: 0; } }
+  
+/* Quotes
+----------------------------------------------------------------------------- */
+
+q { quotes: none; }
+q:before { content: "› "; }
+q:after  { content: " ‹"; }
+q, cite, blockquote { font-style: italic; }
+
+blockquote { 
+  margin: $ratio;
+  text-indent: 1.5*$ratio;
+  cite {
+    display: block;
+    text-align: right;
+    &:before {
+      content: "— "; } }
+  &:before {
+    content: "“";
+    font-size: 4em;
+    position: absolute;
+    font-style: normal ;
+    text-indent: -.1em; } }
+
+/* Code
+----------------------------------------------------------------------------- */
+
+pre {
+  margin: $ratio 0;
+  width: 100%;
+  float: left;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word; }
+code  {
+  padding: 2px 5px;}
+pre, .code {
+  margin-bottom: relative-size($base-lh);
+  padding: $ratio/2 relative-size($base-lh); }
+pre code, .code code {
+  border: none;
+  padding: 0; }
+.code li {
+  list-style-type: decimal-leading-zero; }
+
+/* Tables
+----------------------------------------------------------------------------- */
+
+table {
+  border-collapse: collapse; 
+  border-spacing: 0;
+  margin: $ratio 0;
+  width: 100% }
+caption {
+  margin: $ratio/2 0;
+  font-weight: bold;
+  font-style: italic; }
+td, th {
+  padding: 0 $ratio/2 }
+
+th, tfoot td {
+  text-align: left;
+  font-weight: bold }
+
+/* Forms
+----------------------------------------------------------------------------- */
+
+form { margin: 0 0 $ratio 0; }
+fieldset { border: 0; margin: 0; padding: 0; }
+label { cursor: pointer; }
+legend { border: 0; *margin-left: -7px; padding: 0; display: block; }
+button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+button, input { line-height: normal; *overflow: visible; }
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; *overflow: visible; @include btn() }
+input[type="checkbox"], input[type="radio"] { 
+  padding: 0;
+  margin: 4px 0 0;
+  margin-top: 1px \9;
+  *margin-top: 0;
+  line-height: normal;
+  cursor: pointer; }
+input[type="search"] {
+  -webkit-appearance: textfield;
+  box-sizing: -moz-content-box;
+  box-sizing: -webkit-content-box;
+  box-sizing: content-box; }
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+textarea { overflow: auto; vertical-align: top; resize: vertical; width: 100%; padding: $ratio/2;}
+select,textarea,input[type="text"],input[type="password"],input[type="datetime"],input[type="datetime-local"],input[type="date"],input[type="month"],input[type="time"],input[type="week"],input[type="number"],input[type="email"],input[type="url"],input[type="search"],input[type="tel"],input[type="color"] {
+  display: inline-block;
+  border: 2px solid #eee;
+  border: 2px solid rgba(0,0,0,.05);
+  padding: $ratio/2; }
+textarea,input[type="text"],input[type="password"],input[type="datetime"],input[type="datetime-local"],input[type="date"],input[type="month"],input[type="time"],input[type="week"],input[type="number"],input[type="email"],input[type="url"],input[type="search"],input[type="tel"],input[type="color"] {
+  &:focus {
+    border: 2px solid; } }
+input[type="file"],input[type="image"],input[type="submit"],input[type="reset"],input[type="button"],input[type="radio"],input[type="checkbox"] {
+  width: auto; }
+select {
+  border: 2px solid }
+select[multiple],select[size] {
+  height: auto; }
+select:focus, input[type="file"]:focus,input[type="radio"]:focus,input[type="checkbox"]:focus {
+  outline: 1px ddotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px; }
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color: #000; }
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: #000; }
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #000; }
+
+      

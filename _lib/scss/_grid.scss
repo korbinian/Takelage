@@ -1,0 +1,35 @@
+$icons: fontawesome;
+
+:target {
+   background: 
+   -webkit-linear-gradient(rgba(0,0,0,.2) 1px, transparent 0),
+   -webkit-linear-gradient(0, rgba(0,0,0, .1) 1px, transparent 0),
+   -webkit-linear-gradient(0, rgba(0,0,0, .1) 1px, transparent 0),
+   -webkit-linear-gradient(0, rgba(255,255,255,.6) $unit - $ratio*2, transparent 0),
+   -webkit-linear-gradient(0, rgba(0,0,0, .1) $unit - $ratio, transparent 0);
+  background-size: 0 $ratio, $unit 0, $unit 0, $unit 0, $unit 0;
+  background-position: 0 0, 0 0, -1px 0,  $ratio 0, $ratio/2 0; }
+
+@media screen and (min-width:720px) { 
+
+.toggle {
+  display: block !important;
+  position: fixed;
+  bottom: 0;
+  right: 0; }
+
+.toggle a {
+  color: transparent;
+  width: 2*$ratio;
+  height: 2*$ratio;
+  &:before {
+      font-family: $icons;
+      content: "\f04c";
+      color: #000;
+      display: block;
+      text-align: center;
+      line-height: 1*$ratio;
+      font-size: 2em; } }
+
+:target .on, .off  { display: none; }
+:target .off, .on  { display: block; } }

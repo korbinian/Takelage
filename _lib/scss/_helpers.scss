@@ -1,0 +1,20 @@
+/* utility classes
+ ---------------------------------------------------------------------------- */
+
+.hidden { 
+  position: absolute;
+	font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0; }
+
+
+.skin {
+  display: block;
+  padding: $ratio/2; }
+
+.group {
+  float: left;
+  width: 100%;
+}

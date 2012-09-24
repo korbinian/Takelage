@@ -1,0 +1,86 @@
+/* LAYOUT
+----------------------------------------------------------------------------- */
+
+html {
+  @media (min-width: 960px)  { font-size: 12px; font-size: 1.2vw; } 
+  @media (min-width: 1040px) { font-size: 13px; } 
+  @media (min-width: 1120px) { font-size: 14px; } 
+  @media (min-width: 1200px) { font-size: 15px; } 
+  @media (min-width: 1280px) { font-size: 16px; } }
+
+.row {
+  position: relative;
+  @media (max-width: 720px)  { max-width: 40em; }  
+  @media (min-width: 720px)  { @include col(12); }  
+  @media (min-width: 960px)  { @include shift(4); } }
+
+#header, #main, #sub, #footer { @include clearfix(); }
+
+/* Main
+----------------------------------------------------------------------------- */
+
+#main {
+  #content {
+    @extend .group;
+    @include box();
+    @media (min-width: 720px) { @include col(8); }
+    article {
+      @include box();
+      .nav-sub { 
+        padding: 0;
+        margin: 0 0 $ratio 0;  
+        li {
+          margin: 0;
+          float: left; 
+          width: 100%;
+          @media (min-width: 960px) { text-align: right; }
+          a { 
+            padding: 0;
+            font-weight: bold; }
+          li { margin: 0 !important; 
+            a { 
+              font-weight: normal; } } }
+        @media (min-width: 720px) {
+          float: right;
+          width: 4*$unit - $ratio;
+          margin-top: 0;
+          margin-right: -4*$unit; } 
+        @media (min-width: 960px) {
+          float: left;
+          margin-left: -4*$unit;
+          a { text-align: right; } } } } }
+  #aside {
+    @extend .group;
+    @media (min-width: 720px) { @include col(4); }
+  }
+}
+
+
+
+/* Full-width
+----------------------------------------------------------------------------- */
+
+body.fullwidth #main #content{
+ width: 100%; }
+
+/* Sub
+----------------------------------------------------------------------------- */
+
+#sub .col { 
+  padding: $ratio/2;
+  @include col(4); }
+
+/* Footer
+----------------------------------------------------------------------------- */
+
+#footer .row {
+  padding: $ratio/2; }
+
+.nav-footer {
+  li {
+    float: left;
+    display: block;
+    margin-right: 2px;
+    &:after { content: " / "; }
+    a:before { content:""; } } }
+
