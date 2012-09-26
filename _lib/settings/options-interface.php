@@ -187,34 +187,21 @@ function optionsframework_fields() {
 			unset( $font_size, $font_style, $font_face, $font_color );
 		
 			$typography_defaults = array(
-				'size' => '',
 				'face' => '',
-				'style' => '',
-				'color' => ''
+				'style' => ''
 			);
 			
 			$typography_stored = wp_parse_args( $val, $typography_defaults );
 			
 			$typography_options = array(
-				'sizes' => of_recognized_font_sizes(),
 				'faces' => of_recognized_font_faces(),
-				'styles' => of_recognized_font_styles(),
-				'color' => true
+				'styles' => of_recognized_font_styles()
 			);
 			
 			if ( isset( $value['options'] ) ) {
 				$typography_options = wp_parse_args( $value['options'], $typography_options );
 			}
 
-			if ( $typography_options['sizes'] ) {
-				$font_size = '<select class="of-typography of-typography-size" name="' . esc_attr( $option_name . '[' . $value['id'] . '][size]' ) . '" id="' . esc_attr( $value['id'] . '_size' ) . '">';
-				$sizes = $typography_options['sizes'];
-				foreach ( $sizes as $i ) {
-					$size = $i . 'px';
-					$font_size .= '<option value="' . esc_attr( $size ) . '" ' . selected( $typography_stored['size'], $size, false ) . '>' . esc_html( $size ) . '</option>';
-				}
-				$font_size .= '</select>';
-			}
 
 			if ( $typography_options['faces'] ) {
 				$font_face = '<select class="of-typography of-typography-face" name="' . esc_attr( $option_name . '[' . $value['id'] . '][face]' ) . '" id="' . esc_attr( $value['id'] . '_face' ) . '">';
@@ -234,12 +221,7 @@ function optionsframework_fields() {
 				$font_style .= '</select>';
 			}
 
-			if ( $typography_options['color'] ) {
-				$font_color = '<div id="' . esc_attr( $value['id'] ) . '_color_picker" class="colorSelector"><div style="' . esc_attr( 'background-color:' . $typography_stored['color'] ) . '"></div></div>';
-				$font_color .= '<input class="of-color of-typography of-typography-color" name="' . esc_attr( $option_name . '[' . $value['id'] . '][color]' ) . '" id="' . esc_attr( $value['id'] . '_color' ) . '" type="text" value="' . esc_attr( $typography_stored['color'] ) . '" />';
-			}
-	
-			$typography_fields = compact( 'font_size', 'font_face', 'font_style', 'font_color' );
+			$typography_fields = compact( 'font_face', 'font_style' );
 			$typography_fields = apply_filters( 'of_typography_fields', $typography_fields, $typography_stored, $option_name, $value );
 			$output .= implode( '', $typography_fields );
 			

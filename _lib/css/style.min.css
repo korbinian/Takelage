@@ -337,7 +337,7 @@ body.fullwidth #main #content { width: 100%; }
 
 .slabtextinactive .slabtext { display: inline; white-space: normal; font-size: 1em !important; letter-spacing: inherit !important; word-spacing: inherit !important; *letter-spacing: 0 !important; *word-spacing: 0 !important; }
 
-.slabtextdone .slabtext { display: block; line-height: 0.9; }
+.slabtextdone .slabtext { display: block; line-height: 1; }
 
 @-webkit-keyframes fadeIn { 0% { opacity: 0; }
   80% { opacity: 0; }
@@ -391,6 +391,10 @@ body.fullwidth #main #content { width: 100%; }
   .nav-main li .sub-menu a { padding: 0 0.75em; border: 0 solid; }
   .nav-main li:hover .sub-menu, .nav-main li:focus .sub-menu, .nav-main li ul.show-menu { left: 0; }
   .nav-main li:hover .sub-menu .sub-menu, .nav-main li:focus .sub-menu .sub-menu, .nav-main li ul.show-menu .sub-menu { left: -99em; } }
+/* Breadcrumbs
+----------------------------------------------------------------------------- */
+#breadcrumb { padding: 0 0.75em; }
+
 /* Search
 ----------------------------------------------------------------------------- */
 .search { margin-bottom: 1.5em; }
@@ -481,7 +485,8 @@ ul li:before { content: "" !important; }
 .flexslider .slides { margin: 0; background: #000; }
 .flexslider .slides .slide { display: none; }
 .flexslider .slides .slide h2 { position: absolute; bottom: 0.75em; left: 0.75em; margin: 0; }
-.flexslider .slides .slide h2 span { background: #fff; }
+.flexslider .slides .slide h2 span { border-bottom: 2px solid; background: #fff; }
+.flexslider .slides .slide h2 span a { padding: 0 5px; }
 .flexslider ol.flex-control-nav { position: absolute; top: 0.75em; right: 0.75em; width: auto; }
 .flexslider ol.flex-control-nav li { float: left; list-style: none; }
 .flexslider ol.flex-control-nav li:before { content: "" !important; }
@@ -495,8 +500,6 @@ ul li:before { content: "" !important; }
 .wp-caption { max-width: 100%; padding: 0.375em; }
 
 .wp-caption-text, .gallery-caption { text-style: italic; }
-
-.sticky { spadding: 0.375em; sborder: 2px solid; }
 
 .alignleft { float: left; margin: 0 0.75em 0.75em 0; }
 

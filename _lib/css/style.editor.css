@@ -36,6 +36,18 @@ body { margin: 0; }
 
 @font-face { font-family: SourceSans; src: url("../../../fonts/sourcesans/SourceSans-BoldItalic.eot"); src: url("../../../fonts/sourcesans/SourceSans-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../../../fonts/sourcesans/SourceSans-BoldItalic.woff") format("woff"), url("../../../fonts/sourcesans/SourceSans-BoldItalic.ttf") format("truetype"), url("../../../fonts/sourcesans/SourceSans-BoldItalic.svg#SourceSans") format("svg"); font-weight: 700; font-style: italic; }
 
+@font-face { font-family: steelfish; src: url("../../../fonts/steelfish/steelfish-bold-webfont.eot"); src: url("../../../fonts/steelfish/steelfish-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../../../fonts/steelfish/steelfish-bold-webfont.woff") format("woff"), url("../../../fonts/steelfish/steelfish-bold-webfont.ttf") format("truetype"), url("../../../fonts/steelfish/steelfish-bold-webfont.svg#steelfish") format("svg"); font-weight: 700; font-style: normal; }
+
+@font-face { font-family: leaguegothic; src: url("../../../fonts/leaguegothic/leaguegothic-webfont.eot"); src: url("../../../fonts/leaguegothic/leaguegothic-webfont.eot?#iefix") format("embedded-opentype"), url("../../../fonts/leaguegothic/leaguegothic-webfont.woff") format("woff"), url("../../../fonts/leaguegothic/leaguegothic-webfont.ttf") format("truetype"), url("../../../fonts/leaguegothic/leaguegothic-webfont.svg#leaguegothic") format("svg"); font-weight: 700; font-style: normal; }
+
+@font-face { font-family: alegreya; src: url("../../../fonts/alegreya/Alegreya-Regular-webfont.eot"); src: url("../../../fonts/alegreya/Alegreya-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../../../fonts/alegreya/Alegreya-Regular-webfont.woff") format("woff"), url("../../../fonts/alegreya/Alegreya-Regular-webfont.ttf") format("truetype"), url("../../../fonts/alegreya/Alegreya-Regular-webfont.svg#alegreya") format("svg"); font-weight: 400; font-style: normal; }
+
+@font-face { font-family: alegreya; src: url("../../../fonts/alegreya/Alegreya-Italic-webfont.eot"); src: url("../../../fonts/alegreya/Alegreya-Italic-webfont.eot?#iefix") format("embedded-opentype"), url("../../../fonts/alegreya/Alegreya-Italic-webfont.woff") format("woff"), url("../../../fonts/alegreya/Alegreya-Italic-webfont.ttf") format("truetype"), url("../../../fonts/alegreya/Alegreya-Italic-webfont.svg#alegreya") format("svg"); font-weight: 400; font-style: italic; }
+
+@font-face { font-family: alegreya; src: url("../../../fonts/alegreya/Alegreya-Bold-webfont.eot"); src: url("../../../fonts/alegreya/Alegreya-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../../../fonts/alegreya/Alegreya-Bold-webfont.woff") format("woff"), url("../../../fonts/alegreya/Alegreya-Bold-webfont.ttf") format("truetype"), url("../../../fonts/alegreya/Alegreya-Bold-webfont.svg#alegreya") format("svg"); font-weight: 700; font-style: normal; }
+
+@font-face { font-family: alegreya; src: url("../../../fonts/alegreya/Alegreya-BoldItalic-webfont.eot"); src: url("../../../fonts/alegreya/Alegreya-BoldItalic-webfont.eot?#iefix") format("embedded-opentype"), url("../../../fonts/alegreya/Alegreya-BoldItalic-webfont.woff") format("woff"), url("../../../fonts/alegreya/Alegreya-BoldItalic-webfont.ttf") format("truetype"), url("../../../fonts/alegreya/Alegreya-BoldItalic-webfont.svg#alegreya") format("svg"); font-weight: 700; font-style: italic; }
+
 /* ELEMENTS
 ----------------------------------------------------------------------------- */
 /* TYPOGRAPHY

@@ -13,14 +13,27 @@
 	<?php if ( substr_count( $_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip' ) ) { ob_start( "ob_gzhandler" ); } else { ob_start(); }  ?>
 	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/_lib/images/icons/favicon.ico">
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo get_template_directory_uri(); ?>/_lib/images/icons/apple-touch-icon-114x114-precomposed.png">
-	<?php wp_head(); ?>
+ 	<?php wp_head(); ?>
+	<style type="text/css">
+		body {
+			<?php 
+			$typography = of_get_option('body_typography');         
+			echo 'font-family: ' . $typography['face'] . ';';
+			echo 'font-weight: ' . $typography['style'] . ';'
+			?> }
+		h1, h2, h3, h4, h5, h6 {
+			<?php 
+			$typography = of_get_option('heading_typography');         
+			echo 'font-family: ' . $typography['face'] . ';';
+			echo 'font-weight: ' . $typography['style'] . ';'
+			?> }
+	</style>
 	
 </head>
 
-<body <?php body_class(); ?>  <?php if ( is_home() ) { echo 'role="homepage"'; } ?> id="page">
+<body <?php body_class(); if ( is_home() ) { echo 'role="homepage"'; } ?> id="page" >
 
 	<?php do_action( 'before' ); ?>
-
 
 	<header id="header" role="banner">
 		
@@ -33,7 +46,10 @@
 
 			<div class="banner">
 				<a href="<?php echo home_url( '/' ); ?>" rel="home" class="logo-link">
-					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="240px" height="240px" viewBox="0 0 240 240" enable-background="new 0 0 240 240" xml:space="preserve" class="logo">
+					<?php if ( of_get_option('logo_uploader') ) { ?>
+          	<img src="<?php echo of_get_option('logo_uploader'); ?>" class="logo"/>
+          <?php } else { ?>
+        	<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="240px" height="240px" viewBox="0 0 240 240" enable-background="new 0 0 240 240" xml:space="preserve" class="logo">
 						<circle fill="#fff" cx="119.558" cy="119.557" r="118.825"/>
 						<path d="M119.562,10.236c-60.382,0-109.328,48.946-109.328,109.325c0,60.38,48.945,109.323,109.328,109.328
 							c60.377,0,109.323-48.947,109.323-109.328C228.887,59.184,179.939,10.236,119.562,10.236z M119.562,213.268
@@ -45,7 +61,7 @@
 							C188.072,83.169,174.641,53.665,118.373,53.665z M99.071,135.419c-3.217,1.974-7.344,4.36-11.287,7.539V65.546
 							c14.143,3.09,30.954,11.842,30.954,36.006C118.738,111.342,117.463,124.127,99.071,135.419z"/>
 					</svg>
-					<!--<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="logo" class="logo"/>-->
+        	<?php } ?>
 				</a>
 				<hgroup>
 					<h1 class="title xl"><a href="<?php echo home_url( '/' ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>

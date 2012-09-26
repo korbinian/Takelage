@@ -321,10 +321,11 @@ function of_recognized_font_faces() {
 		'verdana'   => 'Verdana, Geneva',
 		'trebuchet' => 'Trebuchet',
 		'georgia'   => 'Georgia',
+		'Alegreya'   => 'Alegreya',
 		'times'     => 'Times New Roman',
 		'tahoma'    => 'Tahoma, Geneva',
 		'palatino'  => 'Palatino',
-		'helvetica' => 'Helvetica*'
+		'helvetica' => 'Helvetica'
 		);
 	return apply_filters( 'of_recognized_font_faces', $default );
 }
@@ -342,9 +343,7 @@ function of_recognized_font_faces() {
 function of_recognized_font_styles() {
 	$default = array(
 		'normal'      => __('Normal', 'options_framework_theme'),
-		'italic'      => __('Italic', 'options_framework_theme'),
 		'bold'        => __('Bold', 'options_framework_theme'),
-		'bold italic' => __('Bold Italic', 'options_framework_theme')
 		);
 	return apply_filters( 'of_recognized_font_styles', $default );
 }

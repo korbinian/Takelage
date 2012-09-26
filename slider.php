@@ -15,7 +15,7 @@ while ( $the_query->have_posts() ) : $the_query->the_post();
   if ( has_post_thumbnail() ) { the_post_thumbnail(); }
   ?>
   <figcaption>
-    <h2>
+    <h2 class="l">
       <span>
         <a href="<?php the_permalink() ?>">
           <?php the_title(); ?>

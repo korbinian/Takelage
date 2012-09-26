@@ -1,3 +1,34 @@
+@import "setup";
+@import "fonts/cubano";
+@import "fonts/opensans";
+@import "fonts/sourcesans";
+@import "fonts/steelfish";
+@import "fonts/leaguegothic";
+@import "fonts/alegreya";
+
+// Font Stacks
+
+$sans:             alegreya, OpenSans, arial, helvetica, sans-serif;
+$serif:            Georgia, serif;
+$display:          cubano, leaguegothic,steelfish, helvetica, arial, helvetica, sans-serif;
+$caption:          alegreya, OpenSans,Verdana, sans-serif;
+$mono:             "Menlo", "Bitstream Vera Sans", Monaco, "Andale Mono", "Lucida Console", "Droid Mono", monospace;
+$icons:            fontawesome;
+
+$copy:             $sans;
+$code:             $mono;
+
+// Font Weights
+
+$light:            400;
+$normal:           400;
+$bold:             700;
+
+.cta {
+	font-weight: bold;
+}
+
+
 // VARIABLES
 // =========
 
@@ -26,7 +57,7 @@ a {
 }
 
 body {
-	background: $orange;
+	background: $white;
 }
 
 #main {
@@ -36,11 +67,17 @@ body {
 #sub {
 	background: $color-secondary;
 	color: #fff;
+	a {
+		color: #fff;
+	}
 }
 
 #footer {
 	background: darken($color-secondary, 10%);
 	color: $white;
+	a {
+		color: #fff;
+	}
 }
 
 .nav-main {
