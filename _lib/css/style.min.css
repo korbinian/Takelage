@@ -537,3 +537,6 @@ ul li:before { content: "" !important; }
   .toggle a:before { font-family: fontawesome; content: "\f04c"; color: #000; display: block; text-align: center; line-height: 1.5em; font-size: 2em; }
   :target .on, .off { display: none; }
   :target .off, .on { display: block; } }
+.logo-small { width: 6em; height: 6em; }
+
+#footer .logo-small { position: absolute; top: -0.75em; right: 1.5em; }

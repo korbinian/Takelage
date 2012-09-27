@@ -21,10 +21,11 @@ function Takelage_theme_support() {
 	add_theme_support( 'post-formats', array( 'gallery', 'link', 'quote', 'status' ) );	
 	add_theme_support( 'menus' );  
 	register_nav_menus( array(
-		'meta'                   => __( 'Meta Menu', 'Takelage' ),
-		'main'                   => __( 'Main Menu', 'Takelage' ),
-		'footer'                 => __( 'Footer Menu', 'Takelage' ),
+		'meta'   => __( 'Meta Menu', 'Takelage' ),
+		'main'   => __( 'Main Menu', 'Takelage' ),
+		'footer' => __( 'Footer Menu', 'Takelage' ),
 	) );
+	add_filter('jpeg_quality', function($arg){return 70;});
 
 }
 
