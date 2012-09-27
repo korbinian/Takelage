@@ -8,6 +8,7 @@
 @import "print";
 //@import "diagnostics";
 @import "grid";
+@import "fonts";
 
 
 .logo-small {
@@ -19,4 +20,9 @@
 	position: absolute;
 	top: -.5*$ratio;
 	right: $ratio;
+}
+
+
+.cta span {
+	text-transform: uppercase;
 }

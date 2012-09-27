@@ -15,13 +15,13 @@
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo get_template_directory_uri(); ?>/_lib/images/icons/apple-touch-icon-114x114-precomposed.png">
  	<?php wp_head(); ?>
 	<style type="text/css">
-		body {
+		* {
 			<?php 
 			$typography = of_get_option('body_typography');         
 			echo 'font-family: ' . $typography['face'] . ';';
 			echo 'font-weight: ' . $typography['style'] . ';'
 			?> }
-		h1, h2, h3, h4, h5, h6 {
+		h1, h2, h3, h4, h5, h6, .cta span {
 			<?php 
 			$typography = of_get_option('heading_typography');         
 			echo 'font-family: ' . $typography['face'] . ';';

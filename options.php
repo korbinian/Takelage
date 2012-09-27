@@ -55,18 +55,9 @@ function optionsframework_options() {
 
 		// Typography Defaults
 	$typography_defaults = array(
-		'size' => '15px',
-		'face' => 'Alegreya',
-		'style' => 'bold',
-		'color' => '#bada55' );
-		
-	// Typography Options
-	$typography_options = array(
-		'sizes' => array( '6','12','14','16','20' ),
-		'faces' => array( 'Alegreya' => 'Alegreya','Arial' => 'Arial' ),
-		'styles' => array( 'normal' => 'Normal','bold' => 'Bold' ),
-		'color' => false
-	);
+		'face' => 'Arial',
+		'style' => '400',);
+
 
 	$options[] = array(
 		'name' => __('Typography', 'Takelage'),
