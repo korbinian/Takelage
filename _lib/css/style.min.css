@@ -479,22 +479,8 @@ ul li:before { content: "" !important; }
 ------------------------------------------------------------------------------*/
 .toggle { display: none; }
 
-/* Flexslider
+/* Slider
 ------------------------------------------------------------------------------*/
-.flexslider { margin-bottom: 0.75em; overflow: hidden; position: relative; }
-.flexslider .slides { margin: 0; background: #000; }
-.flexslider .slides .slide { display: none; }
-.flexslider .slides .slide h2 { position: absolute; bottom: 0.75em; left: 0.75em; margin: 0; }
-.flexslider .slides .slide h2 span { border-bottom: 2px solid; background: #fff; }
-.flexslider .slides .slide h2 span a { padding: 0 5px; }
-.flexslider ol.flex-control-nav { position: absolute; top: 0.75em; right: 0.75em; width: auto; }
-.flexslider ol.flex-control-nav li { float: left; list-style: none; }
-.flexslider ol.flex-control-nav li:before { content: "" !important; }
-.flexslider ol.flex-control-nav li a { color: transparent; border: 2px solid #fff; border: 2px solid rgba(255, 255, 255, 0.7); background: rgba(0, 0, 0, 0.5); display: block; margin-left: 2px; text-align: center; cursor: pointer; width: 1.5em; height: 1.5em; -webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -ms-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out; }
-.flexslider ol.flex-control-nav li a:hover { -webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -ms-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out; border: 2px solid #fff; }
-.flexslider ol.flex-control-nav li .flex-active { background: #000; background: rgba(0, 0, 0, 0.8); border: 2px solid #fff; border: 2px solid white; }
-.flexslider ul.flex-direction-nav { display: none; }
-
 /* Wordpress Specific Styles
 ------------------------------------------------------------------------------*/
 .wp-caption { max-width: 100%; padding: 0.375em; }

@@ -471,62 +471,9 @@ ul li:before {
 .toggle {
   display: none; }
 
-/* Flexslider
+/* Slider
 ------------------------------------------------------------------------------*/
 
-.flexslider {
-	margin-bottom: $ratio/2;
-	overflow: hidden;
-	position: relative;
-	.slides {
-		margin: 0;
-		background: #000;
-		.slide {
-			display: none; 
-			h2 {
-				position: absolute;
-				bottom: $ratio/2;
-				left: $ratio/2;
-				margin: 0;
-				span {
-					border-bottom: 2px solid;
-					background: #fff;
-					a {
-						padding: 0 5px;
-					} } } } }
-	ol.flex-control-nav {
-		position: absolute;
-		top: $ratio/2;
-		right: $ratio/2;
-		width: auto;
-		li {
-			float: left;
-			list-style: none;
-			&:before {
-				content: "" !important; }
-			a {
-				color: transparent;
-				border: 2px solid #fff;
-				border: 2px solid rgba(255,255,255,.7);
-				background: rgba(0,0,0,.5);
-				display: block;
-				margin-left: 2px;
-				text-align: center;
-				cursor: pointer;
-
-				width: $ratio;
-				height: $ratio;
-				@include transition();
-				&:hover {
-					@include transition();
-					border: 2px solid #fff; } }
-			.flex-active {
-				background: #000;
-				background: rgba(0,0,0,.8);
-				border: 2px solid #fff;
-				border: 2px solid rgba(255,255,255,1); } } }
-	ul.flex-direction-nav {
-		display: none; } }
 
 /* Wordpress Specific Styles
 ------------------------------------------------------------------------------*/
