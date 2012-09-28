@@ -21,7 +21,7 @@
 			echo 'font-family: ' . $typography['face'] . ';';
 			echo 'font-weight: ' . $typography['style'] . ';'
 			?> }
-		h1, h2, h3, h4, h5, h6, .cta span {
+		h1, h2, h3, h4, h5, h6, .cta span, h1 a, h2 a, h3 a, nav a {
 			<?php 
 			$typography = of_get_option('heading_typography');         
 			echo 'font-family: ' . $typography['face'] . ';';
