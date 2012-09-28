@@ -1,13 +1,17 @@
 
 
+
+
+
+
 <?php
 $args = array(
    'posts_per_page' => 5,
    'post_type' => 'feature',
 );
 ?>
-<div class="flexslider">
-  <ul class="slides">
+
+<ul class="rslides" id="slider">
 <?php
 $the_query = new WP_Query($args);
 while ( $the_query->have_posts() ) : $the_query->the_post();
@@ -27,8 +31,5 @@ while ( $the_query->have_posts() ) : $the_query->the_post();
   echo '</figure></li>';
 endwhile;
 wp_reset_postdata(); ?>
-  </ul>
-</div>
 
-
-
+</ul>

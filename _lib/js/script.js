@@ -1,7 +1,11 @@
-  $(window).load(function() {
-    $('.flexslider').flexslider();
-  });
+$(function () {
 
+$("#slider").responsiveSlides({
+maxwidth: 616,
+speed: 800
+});
+
+});
 
 $("#content article .entry a[href^='http']").each(function() {
     $(this).css({
