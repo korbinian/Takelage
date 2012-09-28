@@ -26,3 +26,54 @@
 .cta span {
 	text-transform: uppercase;
 }
+
+.cta {
+  font-weight: bold;
+}
+
+
+::-moz-selection { 
+	color:invert($color-selection);
+	background: $color-selection; }
+::selection { 
+	color:invert($color-selection);
+	background: $color-selection; }
+
+a {
+	color: $black;
+}
+
+body {
+	background: $white;
+}
+
+#main {
+	background: $white;
+}
+
+#sub {
+	background: $color-secondary;
+	color: #fff;
+	a {
+		color: #fff;
+	}
+}
+
+#footer {
+	background: darken($color-secondary, 10%);
+	color: $white;
+	a {
+		color: #fff;
+	}
+}
+
+.nav-main {
+	li {
+		a {
+			background: $white;
+		}
+		.sub-menu {
+			background: $white;
+		}
+	}
+}

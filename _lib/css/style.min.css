@@ -481,6 +481,18 @@ ul li:before { content: "" !important; }
 
 /* Slider
 ------------------------------------------------------------------------------*/
+.slider { position: relative; overflow: hidden; }
+.slider .slides li { position: absolute; display: none; left: 0; top: 0; }
+.slider .slides li:first-child { position: relative; display: block; float: left; }
+.slider .slides li figcaption { position: absolute; bottom: 0; padding: 0.75em; }
+.slider .slides li figcaption h2 { margin: 0; }
+.slider .slides li figcaption h2 a { background: white; padding: 0 5px; border-bottom: 2px solid; }
+
+.slides_tabs { position: absolute; top: 0; right: 0; width: auto; padding: 0.75em; }
+.slides_tabs li { float: left; }
+.slides_tabs li a { display: block; width: 1.5em; height: 1.5em; text-align: center; text-indent: -999em; margin-left: 2px; background: transparent; background: rgba(255, 255, 255, 0.2); border: 2px solid #000; }
+.slides_tabs li.slides_here a { background: #fff; background: rgba(255, 255, 255, 0.8); }
+
 /* Wordpress Specific Styles
 ------------------------------------------------------------------------------*/
 .wp-caption { max-width: 100%; padding: 0.375em; }
@@ -564,3 +576,24 @@ ul li:before { content: "" !important; }
 #footer .logo-small { position: absolute; top: -0.75em; right: 1.5em; }
 
 .cta span { text-transform: uppercase; }
+
+.cta { font-weight: bold; }
+
+::-moz-selection { color: white; background: black; }
+
+::selection { color: white; background: black; }
+
+a { color: black; }
+
+body { background: white; }
+
+#main { background: white; }
+
+#sub { background: #4d004d; color: #fff; }
+#sub a { color: #fff; }
+
+#footer { background: #1a001a; color: white; }
+#footer a { color: #fff; }
+
+.nav-main li a { background: white; }
+.nav-main li .sub-menu { background: white; }

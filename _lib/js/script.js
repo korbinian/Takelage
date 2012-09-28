@@ -1,10 +1,18 @@
 $(function () {
-
-$("#slider").responsiveSlides({
-maxwidth: 616,
-speed: 800
-});
-
+    $(".slides").responsiveSlides({
+        auto: true,             // Boolean: Animate automatically, true or false
+        speed: 1000,            // Integer: Speed of the transition, in milliseconds
+        timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
+        pager: true,            // Boolean: Show pager, true or false
+        random: true,           // Boolean: Randomize the order of the slides, true or false
+        pause: true,            // Boolean: Pause on hover, true or false
+        pauseControls: false,   // Boolean: Pause when hovering controls, true or false
+        maxwidth: "616",        // Integer: Max-width of the slideshow, in pixels
+        controls: "",           // Selector: Where controls should be appended to, default is after the 'ul'
+        namespace: "slides",    // String: change the default namespace used
+        before: function(){},   // Function: Before callback
+        after: function(){}     // Function: After callback
+    });
 });
 
 $("#content article .entry a[href^='http']").each(function() {
@@ -19,7 +27,7 @@ $(document).ready(function() {
     $('.nav').setup_navigation();
 }); 
 var keyCodeMap = {
-        48:"0", 49:"1", 50:"2", 51:"3", 52:"4", 53:"5", 54:"6", 55:"7", 56:"8", 57:"9", 59:";",
+    48:"0", 49:"1", 50:"2", 51:"3", 52:"4", 53:"5", 54:"6", 55:"7", 56:"8", 57:"9", 59:";",
         65:"a", 66:"b", 67:"c", 68:"d", 69:"e", 70:"f", 71:"g", 72:"h", 73:"i", 74:"j", 75:"k", 76:"l",
         77:"m", 78:"n", 79:"o", 80:"p", 81:"q", 82:"r", 83:"s", 84:"t", 85:"u", 86:"v", 87:"w", 88:"x", 89:"y", 90:"z",
         96:"0", 97:"1", 98:"2", 99:"3", 100:"4", 101:"5", 102:"6", 103:"7", 104:"8", 105:"9"

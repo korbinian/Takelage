@@ -474,6 +474,52 @@ ul li:before {
 /* Slider
 ------------------------------------------------------------------------------*/
 
+.slider {
+	position: relative;
+  overflow: hidden;
+	.slides {
+		li {
+			position: absolute;
+			display: none;
+			left: 0;
+			top: 0;
+			&:first-child {
+				position: relative;
+				display: block;
+				float: left; }
+			figcaption {
+				position: absolute;
+				bottom: 0;
+				@include box();
+				h2 {
+					margin: 0;
+					a {
+						background: $white;
+						padding: 0 5px;
+						border-bottom: 2px solid; } } } } } }
+
+.slides_tabs {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: auto;
+	@include box();
+	li {
+		float: left;
+		a {
+			display: block;
+			width: $ratio;
+			height: $ratio;
+			text-align: center;
+			text-indent: -999em;
+			margin-left: 2px;
+			background: transparent;
+			background: rgba(255,255,255,.2);
+			border: 2px solid #000; }
+		&.slides_here {
+			a {
+				background: #fff;
+				background: rgba(255,255,255,.8); } } } }
 
 /* Wordpress Specific Styles
 ------------------------------------------------------------------------------*/

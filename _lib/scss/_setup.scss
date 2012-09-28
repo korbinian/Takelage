@@ -1,4 +1,38 @@
+// Font Stacks
 
+$sans:             alegreya, OpenSans, arial, helvetica, sans-serif;
+$serif:            Georgia, serif;
+$display:          cubano, leaguegothic,steelfish, helvetica, arial, helvetica, sans-serif;
+$caption:          alegreya, OpenSans,Verdana, sans-serif;
+$mono:             "Menlo", "Bitstream Vera Sans", Monaco, "Andale Mono", "Lucida Console", "Droid Mono", monospace;
+$icons:            fontawesome;
+
+$copy:             $sans;
+$code:             $mono;
+
+// Font Weights
+
+$light:            400;
+$normal:           400;
+$bold:             700;
+
+
+
+
+// VARIABLES
+// =========
+
+// Colours
+
+$black:            #000;
+$white:            #fff;
+$orange:           #ff8800;
+$purple:           #4d004d;
+$color-primary:    $orange;
+$color-secondary:  $purple;
+$color-link:       darken($purple, 0%);
+$color-selection:  #000;
+$muted:            #6F6F6F;
 
 // Base Sizes
 

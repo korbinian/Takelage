@@ -27,24 +27,3 @@
 @font-face { font-family: alegreya; src: url("../fonts/alegreya/Alegreya-Bold-webfont.eot"); src: url("../fonts/alegreya/Alegreya-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/alegreya/Alegreya-Bold-webfont.woff") format("woff"), url("../fonts/alegreya/Alegreya-Bold-webfont.ttf") format("truetype"), url("../fonts/alegreya/Alegreya-Bold-webfont.svg#alegreya") format("svg"); font-weight: 700; font-style: normal; }
 
 @font-face { font-family: alegreya; src: url("../fonts/alegreya/Alegreya-BoldItalic-webfont.eot"); src: url("../fonts/alegreya/Alegreya-BoldItalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/alegreya/Alegreya-BoldItalic-webfont.woff") format("woff"), url("../fonts/alegreya/Alegreya-BoldItalic-webfont.ttf") format("truetype"), url("../fonts/alegreya/Alegreya-BoldItalic-webfont.svg#alegreya") format("svg"); font-weight: 700; font-style: italic; }
-
-.cta { font-weight: bold; }
-
-::-moz-selection { color: white; background: black; }
-
-::selection { color: white; background: black; }
-
-a { color: black; }
-
-body { background: white; }
-
-#main { background: white; }
-
-#sub { background: #4d004d; color: #fff; }
-#sub a { color: #fff; }
-
-#footer { background: #1a001a; color: white; }
-#footer a { color: #fff; }
-
-.nav-main li a { background: white; }
-.nav-main li .sub-menu { background: white; }
