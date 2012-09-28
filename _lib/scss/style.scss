@@ -77,3 +77,19 @@ body {
 		}
 	}
 }
+
+.cta {
+	overflow: hidden;
+	background: green;
+}
+
+.cta .textwidget {
+	background: red;
+	line-height: .8;
+	text-align: center;
+	@extend .l;
+	margin: 0;
+	p {
+		margin:0;
+	}
+}

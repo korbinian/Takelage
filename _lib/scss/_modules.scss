@@ -147,22 +147,6 @@ ul.skiplinks {
 			width: 50%;
 			@include box(); } } }
 
-.slabtexted .slabtext{
-	display: -moz-inline-box;
-	display: inline-block;
-	white-space: nowrap}
-.slabtextinactive .slabtext{
-	display: inline;
-	white-space: normal;
-	font-size: 1em !important;
-	letter-spacing: inherit !important;
-	word-spacing: inherit !important;
-	*letter-spacing: 0 !important;
-	*word-spacing: 0 !important;}
-.slabtextdone .slabtext{
-	display: block;
-	line-height: 1;}
-
 @-webkit-keyframes fadeIn { 0% { opacity: 0; } 80% { opacity: 0; } 100% { opacity: 1; } }
    @-moz-keyframes fadeIn { 0% { opacity: 0; } 80% { opacity: 0; } 100% { opacity: 1; } }
     @-ms-keyframes fadeIn { 0% { opacity: 0; } 80% { opacity: 0; } 100% { opacity: 1; } }

@@ -32,7 +32,7 @@ body { font: normal 1em/1.5em sans-serif; }
 
 .xl, .format-quote .entry { font-size: 38px; line-height: 48px; margin: 0 0 0px 0; font-size: 2.375rem; line-height: 3rem; margin: 0 0 0rem 0; }
 
-.l { font-size: 26px; line-height: 36px; margin: 0 0 24px 0; font-size: 1.625rem; line-height: 2.25rem; margin: 0 0 1.5rem 0; }
+.l, .cta .textwidget { font-size: 26px; line-height: 36px; margin: 0 0 24px 0; font-size: 1.625rem; line-height: 2.25rem; margin: 0 0 1.5rem 0; }
 
 .m { font-size: 16px; line-height: 24px; margin: 0 0 24px 0; font-size: 1rem; line-height: 1.5rem; margin: 0 0 1.5rem 0; }
 
@@ -333,12 +333,6 @@ body.fullwidth #main #content { width: 100%; }
 @media (min-width: 720px) { .cta { float: right; margin-top: 3em; display: block; float: left; width: 20em; height: 7.5em; margin-bottom: -1.5em; }
   .cta aside { float: left; width: 50%; padding: 0.75em; } }
 
-.slabtexted .slabtext { display: -moz-inline-box; display: inline-block; white-space: nowrap; }
-
-.slabtextinactive .slabtext { display: inline; white-space: normal; font-size: 1em !important; letter-spacing: inherit !important; word-spacing: inherit !important; *letter-spacing: 0 !important; *word-spacing: 0 !important; }
-
-.slabtextdone .slabtext { display: block; line-height: 1; }
-
 @-webkit-keyframes fadeIn { 0% { opacity: 0; }
   80% { opacity: 0; }
   100% { opacity: 1; } }
@@ -597,3 +591,8 @@ body { background: white; }
 
 .nav-main li a { background: white; }
 .nav-main li .sub-menu { background: white; }
+
+.cta { overflow: hidden; background: green; }
+
+.cta .textwidget { background: red; line-height: .8; text-align: center; margin: 0; }
+.cta .textwidget p { margin: 0; }

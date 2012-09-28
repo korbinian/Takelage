@@ -16,12 +16,10 @@
  	<?php wp_head(); ?>
 	<style type="text/css">
 		* {
-			<?php 
-			$typography = of_get_option('body_typography');         
-			echo 'font-family: ' . $typography['face'] . ';';
-			echo 'font-weight: ' . $typography['style'] . ';'
-			?> }
-		h1, h2, h3, h4, h5, h6, .cta span, h1 a, h2 a, h3 a, nav a {
+			<?php $typography = of_get_option('body_typography'); ?>         
+			font-family: <?php echo $typography['face'] ?>;
+			font-weight: <?php echo $typography['style'] ?>; }
+		h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, nav a, .cta .textwidget, .cta .textwidget div {
 			<?php 
 			$typography = of_get_option('heading_typography');         
 			echo 'font-family: ' . $typography['face'] . ';';
@@ -71,10 +69,8 @@
 
 			<div class="cta">
 				<?php if ( ! dynamic_sidebar( 'sticker-1' ) ) : ?>
-
 				<?php endif; ?>
 				<?php if ( ! dynamic_sidebar( 'sticker-2' ) ) : ?>
-				
 				<?php endif; ?>
 			</div>
 	
