@@ -14,9 +14,13 @@
 	<footer id="footer" role="contentinfo">	
 		<div class="row">
 			<div class="toggle"><a href="#page" class="on">on</a><a href="#" class="off">off</a></div>
+			
 			<?php wp_nav_menu( array( 'theme_location' => 'footer', 'menu_class' => 'nav-footer group' ) ); ?>
-			<small class="source-org vcard copyright">
-				<?php if ( of_get_option('logo_uploader') ) { ?>
+
+			<p class="footer-text"><?php echo of_get_option('footer_text', ''); ?></p>
+
+			<div class="footer-logo">
+			<?php if ( of_get_option('logo_uploader') ) { ?>
 				<img src="<?php echo of_get_option('logo_uploader'); ?>" class="logo-small"/>
 				<?php } else { ?>
 				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 240 240" enable-background="new 0 0 240 240" xml:space="preserve" class="logo-small">
@@ -32,8 +36,12 @@
 				c14.143,3.09,30.954,11.842,30.954,36.006C118.738,111.342,117.463,124.127,99.071,135.419z"/>
 				</svg>
 				<?php } ?>
+			</div>	
 
-				Code <span class="amp">&</span> Design based on the <a href="korbinian-polk.de/takelage">Takelage</a> Theme &mdash; <a href="http://creativecommons.org/licenses/by-sa/3.0/"><abbr>CC BY-SA 3.0</abbr></a> by <strong><a href="http://www.korbinian-polk.de">Korbinian Polk</a></strong> <br><?php echo of_get_option('footer_text', ''); ?>
+			<small>
+				Code <span class="amp">&</span> Design based on the <a href="https://github.com/korbinian/Takelage">Takelage Theme</a> 
+				&mdash; <a href="http://creativecommons.org/licenses/by-sa/3.0/"><abbr>CC BY-SA 3.0</abbr></a> 
+				by <strong><a href="http://www.korbinian-polk.de">Korbinian Polk</a></strong>.
 			</small>
 			
 		</div>
