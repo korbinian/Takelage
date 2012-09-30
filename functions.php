@@ -1,72 +1,232 @@
 <?php
 
 /*------------------------------------------------------------------------------
-	Theme Support
+	External Modules
 ------------------------------------------------------------------------------*/
 
-add_action('after_setup_theme','Takelage_theme_support');
-
-function Takelage_theme_support() {
-	
-	add_theme_support( 'post-thumbnails' );    
-	set_post_thumbnail_size(616, 240, true);
-	if ( ! isset( $content_width ) ) $content_width = 616;
-	if ( function_exists( 'add_image_size' ) ) {
-		add_image_size( 'full-size',  9999, 9999, false );
-		add_image_size( 'one-col',  296, 240, true );
-	}    
-	add_theme_support( 'automatic-feed-links' ); 
-	add_filter('widget_text', 'do_shortcode');
-	add_editor_style( get_template_directory() . '/_lib/css/style.editor.css' );
-	add_theme_support( 'post-formats', array( 'gallery', 'link', 'quote', 'status' ) );	
-	add_theme_support( 'menus' );  
-	register_nav_menus( array(
-		'meta'   => __( 'Meta Menu', 'Takelage' ),
-		'main'   => __( 'Main Menu', 'Takelage' ),
-		'footer' => __( 'Footer Menu', 'Takelage' ),
-	) );
-	add_filter('jpeg_quality', function($arg){return 70;});
-
+/* Add Theme Options
+------------------------------------------------------------------------------*/
+ 
+if ( !function_exists( 'optionsframework_init' ) ) {
+	define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/_lib/settings/' );
+	require_once dirname( __FILE__ ) . '/_lib/settings/options-framework.php';
 }
 
-/*------------------------------------------------------------------------------
-	Initial functions
+/* Add Code Highlighting Library
 ------------------------------------------------------------------------------*/
 
-add_action('after_setup_theme','Takelage_init', 15);
+require( get_template_directory() . '/_lib/codemirror/codemirror.php' );
 
-function Takelage_init() {
+/*------------------------------------------------------------------------------
+	Actions / Filters / ShortCodes
+------------------------------------------------------------------------------*/
 
-	add_action('init', 'Takelage_head_cleanup');
-	add_filter('the_generator', 'Takelage_rss_version');
-	add_filter('wp_head', 'Takelage_remove_wp_widget_recent_comments_style', 1 ); 
+	// Actions
+	add_action('after_setup_theme','Takelage_theme_support');
+	add_action('wp_enqueue_scripts', 'Takelage_scripts');
+	add_action('wp_footer', 'Takelage_add_google_analytics'); 
+  add_action('wp_footer', 'Takelage_add_jquery_fallback'); 
+  add_action('get_header', 'Takelage_enable_threaded_comments'); 
+	add_action('wp_enqueue_scripts', 'Takelage_styles');
+	add_action('wp_enqueue_scripts', 'options_stylesheets_color_style');
+	add_action('wp_enqueue_scripts', 'options_stylesheets_typography_style');
+	add_action('login_head', 'Takelage_login_css');
+	add_action('init', 'Takelage_register_menu');
+	add_action('widgets_init', 'Takelage_widgets_init');
+	add_action('init', 'takelage_register_post_type_feature');
+	add_action('admin_menu', 'disable_default_dashboard_widgets');
 	add_action('wp_head', 'Takelage_remove_recent_comments_style', 1); 
+	add_action('widgets_init', 'Takelage_widgets_init');
+	add_action('wp_before_admin_bar_render', 'Takelage_remove_adminbar_logo', 0);
+	add_action('template_redirect', 'takelage_content_width');
+	
+	// Remove Actions
+	remove_action('wp_head', 'feed_links_extra', 3);             
+	remove_action('wp_head', 'feed_links', 2);                       
+	remove_action('wp_head', 'rsd_link');                            
+	remove_action('wp_head', 'wlwmanifest_link' );                    
+	remove_action('wp_head', 'index_rel_link' );                     
+	remove_action('wp_head', 'parent_post_rel_link', 10, 0);           
+	remove_action('wp_head', 'start_post_rel_link', 10, 0 );           
+	remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
+	remove_action('wp_head', 'wp_generator');
+	remove_action('wp_head', 'start_post_rel_link', 10, 0 );
+  remove_action('wp_head', 'adjacent_posts_rel_link_wp_head',10, 0 );
+  remove_action('wp_head', 'rel_canonical');
+  remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
+
+  // Filters
+	add_filter('body_class', 'takelage_body_class');
+	add_filter('the_generator', 'Takelage_rss_version');
+	add_filter('wp_head', 'Takelage_remove_wp_widget_recent_comments_style', 1); 
 	add_filter('gallery_style', 'Takelage_gallery_style');
-	add_action('wp_enqueue_scripts', 'Takelage_scripts_and_styles', 999); 
-	add_filter('style_loader_tag', 'Takelage_ie_conditional', 10, 2 );
-	add_action('widgets_init', 'Takelage_widgets_init' );
+	add_filter('style_loader_tag', 'Takelage_ie_conditional', 10, 2);
 	add_filter('the_content', 'Takelage_filter_ptags_on_images');
 	add_filter('the_content', 'Takelage_wrap_images');
 	add_filter('excerpt_more', 'Takelage_excerpt_more');
-	add_filter('excerpt_length', 'Takelage_excerpt_length', 999 );
-	add_action('wp_before_admin_bar_render', 'Takelage_remove_adminbar_logo', 0);
-	add_filter('mce_buttons_2', 'Takelage_add_mce_styles' );
-	add_filter('tiny_mce_before_init', 'Takelage_replace_mce_styles' );
-}
+	add_filter('excerpt_length', 'Takelage_excerpt_length', 999);
+	add_filter('mce_buttons_2', 'Takelage_add_mce_styles');
+	add_filter('tiny_mce_before_init', 'Takelage_replace_mce_styles');
+	add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
+	add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10 );
+	add_filter('the_content', 'remove_thumbnail_dimensions', 10 );
+	add_filter('jpeg_quality', function($arg){return 70;});
+	add_filter('widget_text', 'do_shortcode');
+	add_filter('style_loader_tag', 'Takelage_style_remove');
+	add_filter('login_headerurl', 'Takelage_login_url');
+	add_filter('login_headertitle', 'Takelage_login_title');
+	add_filter('admin_footer_text', 'Takelage_custom_admin_footer');
+	add_filter( 'nav_menu_css_class', 'Takelage_nav_menu_css_class', 10, 4 );
 
-/*	Clean the <head>
+	// Shortcodes
+	add_shortcode('Takelage_shortcode', 'Takelage_shortcode');
+
+/*------------------------------------------------------------------------------
+	Theme Support
 ------------------------------------------------------------------------------*/
 
-function Takelage_head_cleanup() {
-	remove_action( 'wp_head', 'feed_links_extra', 3 ); // category feeds                
-	remove_action( 'wp_head', 'feed_links', 2 ); // post and comment feeds                         
-	remove_action( 'wp_head', 'rsd_link' ); // EditURI link                              
-	remove_action( 'wp_head', 'wlwmanifest_link' ); // windows live writer                     
-	remove_action( 'wp_head', 'index_rel_link' ); // index link                        
-	remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 ); // previous link           
-	remove_action( 'wp_head', 'start_post_rel_link', 10, 0 ); // start link            
-	remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 ); // links for adjacent posts
-	remove_action( 'wp_head', 'wp_generator' ); // WP version                          
+function Takelage_theme_support() {
+	if ( function_exists( 'add_theme_support' ) ) {
+   	add_theme_support('menus');
+		add_theme_support('post-formats', array( 'gallery', 'link', 'quote', 'status' ) );	
+		add_theme_support('automatic-feed-links');
+		add_theme_support('post-thumbnails');
+		add_image_size('full-size',  9999, 9999, false );
+		add_image_size('one-col',  296, 240, true );
+		set_post_thumbnail_size(616, 240, true);
+  }
+}
+
+/*------------------------------------------------------------------------------
+	Add Language Support
+------------------------------------------------------------------------------*/
+
+load_theme_textdomain( 'Takelage', get_template_directory() .'/_lib/languages' );
+	$locale = get_locale();
+	$locale_file = get_template_directory() ."/_lib/languages/$locale.php";
+if ( is_readable($locale_file) ) require_once($locale_file);
+
+/*------------------------------------------------------------------------------
+	Load Scripts 
+------------------------------------------------------------------------------*/
+
+function Takelage_scripts() {
+  if (!is_admin()) {
+    wp_deregister_script( 'jquery' );
+		wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js', 'jquery', '1.8.2', true);
+		wp_enqueue_script('jquery');
+		wp_register_script('script', get_template_directory_uri() . '/_lib/js/script.min.js', 'jquery', '1.0.0', true );
+		wp_enqueue_script('script');
+  }
+}
+
+function Takelage_add_google_analytics() { 
+	echo "<script>";  // Change the UA-XXXXXXXX-X to your Account ID
+	echo "var _gaq=[['_setAccount','UA-XXXXXXXX-X'],['_trackPageview']];
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));";
+	echo "</script>";
+}
+
+function Takelage_add_jquery_fallback() {
+	echo "<script>";
+	echo "window.jQuery || document.write('<script src='".get_bloginfo('template_url')."_lib/js/vendor/jquery-1.8.2.min.js'><\/script>')";
+	echo "</script>";
+}
+
+function Takelage_enable_threaded_comments(){
+	if (!is_admin()) {
+		if (is_singular() AND comments_open() AND (get_option('thread_comments') == 1))
+		wp_enqueue_script('comment-reply');
+	}
+}
+
+/*------------------------------------------------------------------------------
+	Load Styles 
+------------------------------------------------------------------------------*/
+
+function Takelage_styles() {
+  if (!is_admin()) {
+    wp_register_style( 'Takelage-stylesheet', get_stylesheet_directory_uri() . '/_lib/css/style.min.css', array(), '', 'all' );
+    wp_register_style( 'Takelage-ie-only', get_stylesheet_directory_uri() . '/_lib/css/style.ie.css', array(), '' );
+    wp_enqueue_style( 'Takelage-stylesheet' ); 
+    wp_enqueue_style( 'Takelage-ie-only' );
+  }
+}
+
+function Takelage_ie_conditional( $tag, $handle ) {
+	if ( 'Takelage-ie-only' == $handle )
+		$tag = '<!--[if lt IE 9]>' . "\n" . $tag . '<![endif]-->' . "\n";
+	return $tag;
+}
+
+function options_stylesheets_color_style()   {
+	if ( of_get_option('color_stylesheet') ) {
+		wp_enqueue_style( 'options_stylesheets_color_style', of_get_option('color_stylesheet'), array(), null );
+	}
+}
+
+function options_stylesheets_typography_style()   {
+	if ( of_get_option('typography_stylesheet') ) {
+		wp_enqueue_style( 'options_stylesheets_typography_style', of_get_option('typography_stylesheet'), array(), null );
+	}
+}
+
+function Takelage_add_editor_style() {
+	add_editor_style( get_template_directory() . '/_lib/css/style.editor.css' );
+}
+
+/*	Remove 'text/css' from our enqueued stylesheet
+------------------------------------------------------------------------------*/
+
+function Takelage_style_remove($tag) {
+	return preg_replace('~\s+type=["\'][^"\']++["\']~', '', $tag);
+}
+
+/*------------------------------------------------------------------------------
+	Customize Login Page
+------------------------------------------------------------------------------*/
+
+function Takelage_login_css() {
+	echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/_lib/css/style.login.css">';
+}
+function Takelage_login_url() { return home_url(); }
+function Takelage_login_title() { return get_option('blogname'); }
+
+/*------------------------------------------------------------------------------
+	Register Menus
+------------------------------------------------------------------------------*/
+
+function Takelage_register_menu() {
+	  register_nav_menus( array(
+			'meta'   => __( 'Meta Menu', 'Takelage' ),
+			'main'   => __( 'Main Menu', 'Takelage' ),
+			'footer' => __( 'Footer Menu', 'Takelage' ),
+		) );
+	}
+
+/*	Adds .has-children class to menus
+------------------------------------------------------------------------------*/
+
+function Takelage_nav_menu_css_class( $css_class, $item ) {
+	global $wpdb;
+	$has_children = $wpdb->get_var("SELECT COUNT(meta_id) FROM wp_postmeta WHERE meta_key='_menu_item_menu_item_parent' AND meta_value='" . $item->ID . "'");
+	if ($has_children > 0) {
+	    array_push($css_class, 'has-subnav');
+	}
+	return $css_class;
+}
+
+/*	Sets Content Width
+------------------------------------------------------------------------------*/
+
+function takelage_content_width() {
+	if ( ! isset( $content_width ) ) $content_width = 616;
+	if ( is_page_template( 'fullwidth.php' ) ) {
+		global $content_width;
+		$content_width = 936;
+	}
 }
 
 /*	Remove WP Version from RSS
@@ -102,144 +262,21 @@ function Takelage_gallery_style($css) {
   return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
 }
 
-
-/* Enqueue Base Scripts and Styles
+/*	Remove the <div> surrounding the dynamic navigation
 ------------------------------------------------------------------------------*/
 
-function Takelage_scripts_and_styles() {
-  if (!is_admin()) {
-  
-    wp_register_style( 'Takelage-stylesheet', get_stylesheet_directory_uri() . '/_lib/css/style.min.css', array(), '', 'all' );
-    wp_register_style( 'Takelage-ie-only', get_stylesheet_directory_uri() . '/_lib/css/style.ie.css', array(), '' );
-
-    wp_enqueue_style( 'Takelage-stylesheet' ); 
-    wp_enqueue_style( 'Takelage-ie-only' );
-
-    wp_deregister_script('jquery');
-    wp_register_script( 'script', get_stylesheet_directory_uri() . '/_lib/js/script.min.js', array(), '', true );
-    wp_enqueue_script( 'script' ); 
-    if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
-      wp_enqueue_script( 'comment-reply' );
-    }
-  }
+function my_wp_nav_menu_args( $args = '' ) {
+	$args['container'] = false;
+	return $args;
 }
 
-function Takelage_ie_conditional( $tag, $handle ) {
-	if ( 'Takelage-ie-only' == $handle )
-		$tag = '<!--[if lt IE 9]>' . "\n" . $tag . '<![endif]-->' . "\n";
-	return $tag;
-}
-
-function options_stylesheets_color_style()   {
-	if ( of_get_option('color_stylesheet') ) {
-		wp_enqueue_style( 'options_stylesheets_color_style', of_get_option('color_stylesheet'), array(), null );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'options_stylesheets_color_style' );
-
-function options_stylesheets_typography_style()   {
-	if ( of_get_option('typography_stylesheet') ) {
-		wp_enqueue_style( 'options_stylesheets_typography_style', of_get_option('typography_stylesheet'), array(), null );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'options_stylesheets_typography_style' );
-
-
-/*	Initialize Sidebar Widgets
+/*	Remove inline width and height added to images
 ------------------------------------------------------------------------------*/
 
-function Takelage_widgets_init() {
-	register_sidebar( array(
-		'name'          => __( 'Hintergrund', 'Takelage' ),
-		'id'            => 'bg',
-		'before_widget' => '<aside id="%1$s" class="widget skin %2$s">',
-		'after_widget'  => "</aside>",
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-	) );
-	register_sidebar( array(
-		'name'          => __( 'Sidebar Startseite', 'Takelage' ),
-		'id'            => 'sidebar-front',
-		'before_widget' => '<aside id="%1$s" class="widget skin %2$s">',
-		'after_widget'  => "</aside>",
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-	) );
-	register_sidebar( array(
-		'name'          => __( 'Sub 1 Startseite', 'Takelage' ),
-		'id'            => 'sidebar-1-front',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>",
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-	) );
-	register_sidebar( array(
-		'name'          => __( 'Sub 2 Startseite', 'Takelage' ),
-		'id'            => 'sidebar-2-front',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>",
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-	) );
-	register_sidebar( array(
-		'name'          => __( 'Sub 3 Startseite', 'Takelage' ),
-		'id'            => 'sidebar-3-front',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>",
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-	) );
-	register_sidebar( array(
-		'name'          => __( 'Sticker-1', 'Takelage' ),
-		'id'            => 'sticker-1',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>",
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-	) );
-	register_sidebar( array(
-		'name'          => __( 'Sticker-2', 'Takelage' ),
-		'id'            => 'sticker-2',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>",
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'Takelage' ),
-		'id'            => 'sidebar',
-		'before_widget' => '<aside id="%1$s" class="widget skin %2$s">',
-		'after_widget'  => "</aside>",
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-	) );
-	register_sidebar( array(
-		'name'          => __( 'Sub 1', 'Takelage' ),
-		'id'            => 'sidebar-1',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>",
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-	) );
-	register_sidebar( array(
-		'name'          => __( 'Sub 1', 'Takelage' ),
-		'id'            => 'sidebar-2',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>",
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-	) );
-	register_sidebar( array(
-		'name'          => __( 'Sub 2', 'Takelage' ),
-		'id'            => 'sidebar-3',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>",
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-	) );
+function remove_thumbnail_dimensions( $html ) {
+	$html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+	return $html;
 }
-add_action( 'widgets_init', 'Takelage_widgets_init' );
 
 /*	Remove <p> around <img>s
 ------------------------------------------------------------------------------*/
@@ -252,9 +289,23 @@ function Takelage_filter_ptags_on_images($content){
 ------------------------------------------------------------------------------*/
 
 function Takelage_wrap_images($content){
-    return preg_replace('/<img (.*) \/>\s*/iU', '<figure><img \1 /></figure>', $content);
+	return preg_replace('/<img (.*) \/>\s*/iU', '<figure><img \1 /></figure>', $content);
 }
 
+/*	Remove the Wp Logo from the Adminbar
+------------------------------------------------------------------------------*/
+
+function Takelage_remove_adminbar_logo() {
+	global $wp_admin_bar;
+	$wp_admin_bar->remove_menu('wp-logo');
+}
+
+/*	Customize Backend Footer
+------------------------------------------------------------------------------*/
+
+function Takelage_custom_admin_footer() {
+	echo '<i>Developed by</i> <b><a href="http://www.korbinian-polk.de">Korbinian Polk</a></b> ';
+}
 
 /*	Change the Read More Link after the Excerpt
 ------------------------------------------------------------------------------*/
@@ -271,14 +322,6 @@ function Takelage_excerpt_length( $length ) {
 	return 50;
 }
 
-/*	Remove the Wp Logo from the Adminbar
-------------------------------------------------------------------------------*/
-
-function Takelage_remove_adminbar_logo() {
-        global $wp_admin_bar;
-        $wp_admin_bar->remove_menu('wp-logo');
-}
-
 /*	Add Styledropdown to TinyMCE 
 ------------------------------------------------------------------------------*/
 
@@ -291,14 +334,53 @@ function Takelage_add_mce_styles( $buttons ) {
 ------------------------------------------------------------------------------*/
 
 function Takelage_replace_mce_styles( $settings ) {
-  $settings['theme_advanced_blockformats'] = 'p,a,div,span,h1,h2,h3,h4,h5,h6,tr,';
-  $style_formats = array(
-      array( 'title' => 'Button',         'inline' => 'span',  'classes' => 'button' ),
-      array( 'title' => 'Green Button',   'inline' => 'span',  'classes' => 'button button-green' )
-  );
-  $settings['style_formats'] = json_encode( $style_formats );
-  return $settings;
+	$settings['theme_advanced_blockformats'] = 'p,a,div,span,h1,h2,h3,h4,h5,h6,tr,';
+	$style_formats = array(
+	    array( 'title' => 'Button',         'inline' => 'span',  'classes' => 'button' ),
+	    array( 'title' => 'Green Button',   'inline' => 'span',  'classes' => 'button button-green' )
+	);
+	$settings['style_formats'] = json_encode( $style_formats );
+	return $settings;
 }
+
+/*------------------------------------------------------------------------------
+	Add Body Classes
+------------------------------------------------------------------------------*/
+
+function takelage_body_class( $classes ) {
+	global $post;
+	$background_color = get_background_color();
+
+	if ( is_page_template( 'fullwidth.php' ) )
+		$classes[] = 'fullwidth';
+
+	if ( empty( $background_color ) )
+		$classes[] = 'custom-background-empty';
+	elseif ( in_array( $background_color, array( 'fff', 'ffffff' ) ) )
+		$classes[] = 'custom-background-white';
+
+	if( is_home() ) {			
+			$key = array_search( 'blog', $classes );
+			if($key > -1) {
+				unset( $classes[$key] );
+			};
+		} elseif( is_page() ) {
+			$classes[] = sanitize_html_class( $post->post_name );
+		} elseif(is_singular()) {
+			$classes[] = sanitize_html_class( $post->post_name );
+		};
+	return $classes;
+}
+
+
+/*------------------------------------------------------------------------------
+	Adds delete/spam links to comments
+------------------------------------------------------------------------------*/
+
+function takelage_comment_link($id) {
+  if (current_user_can('edit_post')) {
+    echo '/ <a href="'.admin_url("comment.php?action=cdc&c=$id").'">delete</a> ';
+    echo '/ <a href="'.admin_url("comment.php?action=cdc&dt=spam&c=$id").'">spam</a>'; } }
 
 /*------------------------------------------------------------------------------
 	Disable Dashboard Widgets
@@ -313,31 +395,103 @@ function disable_default_dashboard_widgets() {
 	remove_meta_box('dashboard_primary', 'dashboard', 'core');
 	remove_meta_box('dashboard_secondary', 'dashboard', 'core');
 }
-add_action('admin_menu', 'disable_default_dashboard_widgets');
 
-
-/*------------------------------------------------------------------------------
-	Customize Login Page
+/*	Initialize Sidebar Widgets
 ------------------------------------------------------------------------------*/
 
-function Takelage_login_css() {
-	echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/_lib/css/style.login.css">';
+function Takelage_widgets_init() {
+	if(function_exists('register_sidebar')) {
+		register_sidebar( array(
+			'name'          => __( 'Hintergrund', 'Takelage' ),
+			'id'            => 'bg',
+			'before_widget' => '<aside id="%1$s" class="widget skin %2$s">',
+			'after_widget'  => "</aside>",
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>',
+		) );
+		register_sidebar( array(
+			'name'          => __( 'Sidebar Startseite', 'Takelage' ),
+			'id'            => 'sidebar-front',
+			'before_widget' => '<aside id="%1$s" class="widget skin %2$s">',
+			'after_widget'  => "</aside>",
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>',
+		) );
+		register_sidebar( array(
+			'name'          => __( 'Sub 1 Startseite', 'Takelage' ),
+			'id'            => 'sidebar-1-front',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => "</aside>",
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>',
+		) );
+		register_sidebar( array(
+			'name'          => __( 'Sub 2 Startseite', 'Takelage' ),
+			'id'            => 'sidebar-2-front',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => "</aside>",
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>',
+		) );
+		register_sidebar( array(
+			'name'          => __( 'Sub 3 Startseite', 'Takelage' ),
+			'id'            => 'sidebar-3-front',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => "</aside>",
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>',
+		) );
+		register_sidebar( array(
+			'name'          => __( 'Sticker-1', 'Takelage' ),
+			'id'            => 'sticker-1',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => "</aside>",
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>',
+		) );
+		register_sidebar( array(
+			'name'          => __( 'Sticker-2', 'Takelage' ),
+			'id'            => 'sticker-2',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => "</aside>",
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>',
+		) );
+		register_sidebar( array(
+			'name'          => __( 'Sidebar', 'Takelage' ),
+			'id'            => 'sidebar',
+			'before_widget' => '<aside id="%1$s" class="widget skin %2$s">',
+			'after_widget'  => "</aside>",
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>',
+		) );
+		register_sidebar( array(
+			'name'          => __( 'Sub 1', 'Takelage' ),
+			'id'            => 'sidebar-1',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => "</aside>",
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>',
+		) );
+		register_sidebar( array(
+			'name'          => __( 'Sub 1', 'Takelage' ),
+			'id'            => 'sidebar-2',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => "</aside>",
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>',
+		) );
+		register_sidebar( array(
+			'name'          => __( 'Sub 2', 'Takelage' ),
+			'id'            => 'sidebar-3',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => "</aside>",
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>',
+		) );
+	}
 }
-function Takelage_login_url() { return home_url(); }
-function Takelage_login_title() { return get_option('blogname'); }
-add_action('login_head', 'Takelage_login_css');
-add_filter('login_headerurl', 'Takelage_login_url');
-add_filter('login_headertitle', 'Takelage_login_title');
 
-
-/*------------------------------------------------------------------------------
-	Customize Backend Footer
-------------------------------------------------------------------------------*/
-
-function Takelage_custom_admin_footer() {
-	echo '<i>Developed by</i> <b><a href="http://www.korbinian-polk.de">Korbinian Polk</a></b> ';
-}
-add_filter('admin_footer_text', 'Takelage_custom_admin_footer');
 
 /*------------------------------------------------------------------------------
 	Template Tags
@@ -585,137 +739,53 @@ function Takelage_breadcrumb() {
 endif;
 
 /*------------------------------------------------------------------------------
-	Add Language Support
-------------------------------------------------------------------------------*/
-
-load_theme_textdomain( 'Takelage', get_template_directory() .'/_lib/languages' );
-	$locale = get_locale();
-	$locale_file = get_template_directory() ."/_lib/languages/$locale.php";
-if ( is_readable($locale_file) ) require_once($locale_file);
-
-/*------------------------------------------------------------------------------
-	Add Code Highlighting
-------------------------------------------------------------------------------*/
-
-require( get_template_directory() . '/_lib/codemirror/codemirror.php' );
-
-/*------------------------------------------------------------------------------
-	Adds .has-children class to menus
-------------------------------------------------------------------------------*/
-
-function Takelage_nav_menu_css_class( $css_class, $item ) {
-    global $wpdb;
-    $has_children = $wpdb->get_var("SELECT COUNT(meta_id) FROM wp_postmeta WHERE meta_key='_menu_item_menu_item_parent' AND meta_value='" . $item->ID . "'");
-    if ($has_children > 0) {
-        array_push($css_class, 'has-subnav');
-    }
-    return $css_class;
-}
-add_filter( 'nav_menu_css_class', 'Takelage_nav_menu_css_class', 10, 4 );
-
-/*------------------------------------------------------------------------------
-	Adds delete/spam links to comments
-------------------------------------------------------------------------------*/
-
-function takelage_comment_link($id) {
-  if (current_user_can('edit_post')) {
-    echo '/ <a href="'.admin_url("comment.php?action=cdc&c=$id").'">delete</a> ';
-    echo '/ <a href="'.admin_url("comment.php?action=cdc&dt=spam&c=$id").'">spam</a>'; } }
-
-
-/*------------------------------------------------------------------------------
 	Create Custom Post-type 'Featured Post'
 ------------------------------------------------------------------------------*/
 
-add_action( 'init', 'takelage_register_post_type_feature' );
-
 function takelage_register_post_type_feature() {
-
-    $labels = array( 
-        'name'                => __( 'Featured Posts', 'Takelage' ),
-        'singular_name'       => __( 'feature', 'Takelage' ),
-        'add_new'             => __( 'Add New', 'Takelage' ),
-        'add_new_item'        => __( 'Add New Feature', 'Takelage' ),
-        'edit_item'           => __( 'Edit Feature', 'Takelage' ),
-        'new_item'            => __( 'New Feature', 'Takelage' ),
-        'view_item'           => __( 'View Feature', 'Takelage' ),
-        'search_items'        => __( 'Search Feature', 'Takelage' ),
-        'not_found'           => __( 'No Features found', 'Takelage' ),
-        'not_found_in_trash'  => __( 'No Features found in Trash', 'Takelage' ),
-        'parent_item_colon'   => __( 'Parent Feature:', 'Takelage' ),
-        'menu_name'           => __( 'Featured Posts', 'Takelage' ),
-    );
-
-    $args = array( 
-        'labels'              => $labels,
-        'hierarchical'        => true,
-        'description'         => __( 'Post Type for Featured Posts', 'Takelage' ),
-        'supports'            => array( 'title', 'editor', 'author',   'thumbnail', 'post-thumbnails', 'excerpt', 'trackbacks', 'custom-fields', 'comments','revisions','page-attributes'  ),
-        'public'              => true,
-        'show_ui'             => true,
-        'show_in_menu'        => true,
-        'show_in_nav_menus'   => true,
-        'publicly_queryable'  => true,
-        'exclude_from_search' => true,
-        'has_archive'         => true,
-        'query_var'           => true,
-        'can_export'          => true,
-        'rewrite'             => true,
-        'menu_position'       => 5,
-        'capability_type'     => 'post'
-    );
-
-    register_post_type( 'feature', $args );
-
-    flush_rewrite_rules(false);
+	register_taxonomy_for_object_type('category','feature');
+	register_taxonomy_for_object_type('post_tag','feature');
+	$labels = array( 
+		'name'                => __( 'Featured Posts', 'Takelage' ),
+		'singular_name'       => __( 'feature', 'Takelage' ),
+		'add_new'             => __( 'Add New', 'Takelage' ),
+		'add_new_item'        => __( 'Add New Feature', 'Takelage' ),
+		'edit_item'           => __( 'Edit Feature', 'Takelage' ),
+		'new_item'            => __( 'New Feature', 'Takelage' ),
+		'view_item'           => __( 'View Feature', 'Takelage' ),
+		'search_items'        => __( 'Search Feature', 'Takelage' ),
+		'not_found'           => __( 'No Features found', 'Takelage' ),
+		'not_found_in_trash'  => __( 'No Features found in Trash', 'Takelage' ),
+		'parent_item_colon'   => __( 'Parent Feature:', 'Takelage' ),
+		'menu_name'           => __( 'Featured Posts', 'Takelage' ),
+	);
+	$args = array( 
+		'labels'              => $labels,
+		'hierarchical'        => true,
+		'description'         => __( 'Post Type for Featured Posts', 'Takelage' ),
+		'supports'            => array( 'title', 'editor', 'author',   'thumbnail', 'post-thumbnails', 'excerpt', 'trackbacks', 'custom-fields', 'comments','revisions','page-attributes'  ),
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'publicly_queryable'  => true,
+		'exclude_from_search' => true,
+		'has_archive'         => true,
+		'query_var'           => true,
+		'can_export'          => true,
+		'rewrite'             => true,
+		'menu_position'       => 5,
+		'capability_type'     => 'post',
+		'taxonomies'          => array( 'post_tag', 'category')
+	);
+	register_post_type( 'feature', $args );
+	flush_rewrite_rules(false);
 }
-
-
-
-add_action('init','add_categories_to_cpt');
-function add_categories_to_cpt(){
-    register_taxonomy_for_object_type('category', 'feature');
-}
-
 
 /*------------------------------------------------------------------------------
-	Add Body Classes
+	Add Demo Shortcodes
 ------------------------------------------------------------------------------*/
 
-function takelage_body_class( $classes ) {
-	$background_color = get_background_color();
-
-	if ( is_page_template( 'fullwidth.php' ) )
-		$classes[] = 'fullwidth';
-
-	if ( empty( $background_color ) )
-		$classes[] = 'custom-background-empty';
-	elseif ( in_array( $background_color, array( 'fff', 'ffffff' ) ) )
-		$classes[] = 'custom-background-white';
-
-	return $classes;
+function Takelage_shortcode( $atts, $content = null ) {
+	return '<h2 class="demo">'.$content.'</h2>';
 }
-add_filter( 'body_class', 'takelage_body_class' );
-
-function takelage_content_width() {
-	if ( is_page_template( 'fullwidth.php' ) ) {
-		global $content_width;
-		$content_width = 936;
-	}
-}
-add_action( 'template_redirect', 'takelage_content_width' );
-
-/*------------------------------------------------------------------------------
-	Add Theme Options
-------------------------------------------------------------------------------*/
- 
-if ( !function_exists( 'optionsframework_init' ) ) {
-	define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/_lib/settings/' );
-	require_once dirname( __FILE__ ) . '/_lib/settings/options-framework.php';
-}
-
-
-
-
-
-
