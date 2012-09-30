@@ -198,9 +198,9 @@ function Takelage_login_title() { return get_option('blogname'); }
 
 function Takelage_register_menu() {
 	  register_nav_menus( array(
-			'meta'   => __( 'Meta Menu', 'Takelage' ),
-			'main'   => __( 'Main Menu', 'Takelage' ),
-			'footer' => __( 'Footer Menu', 'Takelage' ),
+			'meta'   => __( 'Meta Menu <br><small>Other Pirate Party Portals like Wiki, Twitter &hellip;</small>', 'Takelage' ),
+			'main'   => __( 'Main Menu <br><small>Static Pages</small>', 'Takelage' ),
+			'footer' => __( 'Footer Menu <br><small>Minor Links</small>', 'Takelage' ),
 		) );
 	}
 
