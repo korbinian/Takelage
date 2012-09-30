@@ -72,8 +72,8 @@ function optionsframework_init() {
 	if ( $optionsfile = locate_template( array('options.php') ) ) {
 		require_once($optionsfile);
 	}
-	else if (file_exists( dirname( __FILE__ ) . '/options.php' ) ) {
-		require_once dirname( __FILE__ ) . '/options.php';
+	else if (file_exists( dirname( __FILE__ ) . '/_lib/settings/options.php' ) ) {
+		require_once dirname( __FILE__ ) . '/_lib/settings/options.php';
 	}
 	
 	$optionsframework_settings = get_option('optionsframework' );

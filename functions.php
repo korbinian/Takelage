@@ -93,7 +93,7 @@ function Takelage_theme_support() {
 		add_theme_support('post-thumbnails');
 		add_image_size('full-size',  9999, 9999, false );
 		add_image_size('one-col',  296, 240, true );
-		set_post_thumbnail_size(616, 240, true);
+		set_post_thumbnail_size( 616, 240, true);
   }
 }
 
@@ -118,15 +118,6 @@ function Takelage_scripts() {
 		wp_register_script('script', get_template_directory_uri() . '/_lib/js/script.min.js', 'jquery', '1.0.0', true );
 		wp_enqueue_script('script');
   }
-}
-
-function Takelage_add_google_analytics() { 
-	echo "<script>";  // Change the UA-XXXXXXXX-X to your Account ID
-	echo "var _gaq=[['_setAccount','UA-XXXXXXXX-X'],['_trackPageview']];
-		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-		s.parentNode.insertBefore(g,s)}(document,'script'));";
-	echo "</script>";
 }
 
 function Takelage_add_jquery_fallback() {
@@ -183,6 +174,13 @@ function Takelage_add_editor_style() {
 function Takelage_style_remove($tag) {
 	return preg_replace('~\s+type=["\'][^"\']++["\']~', '', $tag);
 }
+
+/*------------------------------------------------------------------------------
+	Anonymize Users
+------------------------------------------------------------------------------*/
+
+$_SERVER["REMOTE_ADDR"] = "0.0.0.0";
+$_SERVER["HTTP_USER_AGENT"] = "";
 
 /*------------------------------------------------------------------------------
 	Customize Login Page
