@@ -26,7 +26,6 @@
 
 	<ol class="commentlist">
 		<?php wp_list_comments( array( 'callback' => 'Takelage_comment' ) ); ?>
-		<?php delete_comment_link(get_comment_ID()); ?>
 	</ol>
 
 	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>

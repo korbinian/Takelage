@@ -24,7 +24,6 @@ require( get_template_directory() . '/_lib/codemirror/codemirror.php' );
 	// Actions
 	add_action('after_setup_theme','Takelage_theme_support');
 	add_action('wp_enqueue_scripts', 'Takelage_scripts');
-	add_action('wp_footer', 'Takelage_add_google_analytics'); 
   add_action('wp_footer', 'Takelage_add_jquery_fallback'); 
   add_action('get_header', 'Takelage_enable_threaded_comments'); 
 	add_action('wp_enqueue_scripts', 'Takelage_styles');

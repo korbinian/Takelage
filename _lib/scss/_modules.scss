@@ -162,11 +162,7 @@ ul.skiplinks {
           animation: fadeIn 1s 0s ease-in both; }
 
 .cta {
-	overflow: hidden;	
-	-webkit-perspective: 300px;
-	-webkit-perspective-origin: 40% 0%;
-	&:hover {
-		@include transition(); } } 
+	overflow: hidden;	} 
 
 .cta .textwidget {
 	line-height: .8;
@@ -174,11 +170,6 @@ ul.skiplinks {
 	margin: 0;
 	display: block;
 	@extend .l;
-	-webkit-transform-style: preserve-3d;
-	-webkit-transform: rotate3d(2, 3, 1, -25deg);
-	&:hover {
-		-webkit-transform: rotate3d(0, 0, 0, 0deg);
-		@include transition(); }
 	* { margin:0; } }
 
 /* Nav-Meta
@@ -384,9 +375,10 @@ ul.skiplinks {
     float: left;
     width: $unit;
     text-align: right;
-    margin-left: -$unit;
+    margin-left: -$unit !important;
     padding: 0 $ratio/2;
-    line-height: 3em;
+    @include box();
+    @include f(26,36,24);
     a { display: inline-block; } } }
 
 .nav-previous a:after { content:"\f060"; }
@@ -414,7 +406,9 @@ ul.skiplinks {
 			width: 100%;
 			margin-bottom: $ratio;
 			&:before {
-				top: 3.4*$ratio;
+				top: $ratio;
+				font-family: $display;
+				@extend .l;
 			}
 			@media (max-width: 960px)  { padding-left: $unit - $ratio/2; } 
 			img.avatar {
@@ -423,6 +417,10 @@ ul.skiplinks {
 				display: block;
 				font-style: normal; }
 			.comment-meta { @extend .s; } } } }
+.comments-title {
+	@include box();
+	h2 {
+		margin: 0; } }
 
 li.bypostauthor article {
 	border :2px solid;
@@ -444,6 +442,8 @@ ul li:before {
 	margin-bottom: $ratio; }
 
 #respond {
+	@include box();
+	float: left;
 	#commentform {
 		.logged-in-as, .comment-notes {
 			.required {

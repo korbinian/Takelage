@@ -32,7 +32,7 @@ body { font: normal 1em/1.5em sans-serif; }
 
 .xl, .format-quote .entry { font-size: 38px; line-height: 48px; margin: 0 0 0px 0; font-size: 2.375rem; line-height: 3rem; margin: 0 0 0rem 0; }
 
-.l, .cta .textwidget { font-size: 26px; line-height: 36px; margin: 0 0 24px 0; font-size: 1.625rem; line-height: 2.25rem; margin: 0 0 1.5rem 0; }
+.l, .cta .textwidget, #comments .commentlist .comment:before { font-size: 26px; line-height: 36px; margin: 0 0 24px 0; font-size: 1.625rem; line-height: 2.25rem; margin: 0 0 1.5rem 0; }
 
 .m { font-size: 16px; line-height: 24px; margin: 0 0 24px 0; font-size: 1rem; line-height: 1.5rem; margin: 0 0 1.5rem 0; }
 
@@ -355,11 +355,9 @@ body.fullwidth #main #content { width: 100%; }
 
 .cta .widget { -webkit-animation: fadeIn 1s 0s ease-in both; -moz-animation: fadeIn 1s 0s ease-in both; -ms-animation: fadeIn 1s 0s ease-in both; -o-animation: fadeIn 1s 0s ease-in both; animation: fadeIn 1s 0s ease-in both; }
 
-.cta { overflow: hidden; -webkit-perspective: 300px; -webkit-perspective-origin: 40% 0%; }
-.cta:hover { -webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -ms-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out; }
+.cta { overflow: hidden; }
 
-.cta .textwidget { line-height: .8; text-align: center; margin: 0; display: block; -webkit-transform-style: preserve-3d; -webkit-transform: rotate3d(2, 3, 1, -25deg); }
-.cta .textwidget:hover { -webkit-transform: rotate3d(0, 0, 0, 0deg); -webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -ms-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out; }
+.cta .textwidget { line-height: .8; text-align: center; margin: 0; display: block; }
 .cta .textwidget * { margin: 0; }
 
 /* Nav-Meta
@@ -436,7 +434,7 @@ body.fullwidth #main #content { width: 100%; }
 /* Nav-Top
 ------------------------------------------------------------------------------*/
 #nav-top a:after { font-family: fontawesome; }
-@media (min-width: 960px) { #nav-top { float: left; width: 5em; text-align: right; margin-left: -5em; padding: 0 0.75em; line-height: 3em; }
+@media (min-width: 960px) { #nav-top { float: left; width: 5em; text-align: right; margin-left: -5em !important; padding: 0 0.75em; padding: 0.75em; font-size: 26px; line-height: 36px; margin: 0 0 24px 0; font-size: 1.625rem; line-height: 2.25rem; margin: 0 0 1.5rem 0; }
   #nav-top a { display: inline-block; } }
 
 .nav-previous a:after { content: "\f060"; }
@@ -452,10 +450,13 @@ body.fullwidth #main #content { width: 100%; }
 #comments { margin-top: 3em; }
 #comments .commentlist { margin-bottom: 6em; }
 #comments .commentlist .comment { float: left; display: block; width: 100%; margin-bottom: 1.5em; }
-#comments .commentlist .comment:before { top: 5.1em; }
+#comments .commentlist .comment:before { top: 1.5em; font-family: cubano, leaguegothic, steelfish, helvetica, arial, helvetica, sans-serif; }
 @media (max-width: 960px) { #comments .commentlist .comment { padding-left: 4.25em; } }
 #comments .commentlist .comment img.avatar { border-radius: 100%; }
 #comments .commentlist .comment cite { display: block; font-style: normal; }
+
+.comments-title { padding: 0.75em; }
+.comments-title h2 { margin: 0; }
 
 li.bypostauthor article { border: 2px solid; padding: 1.5em; }
 
@@ -467,6 +468,7 @@ ul li:before { content: "" !important; }
 
 .pingback { float: left; display: block; width: 100%; margin-bottom: 1.5em; }
 
+#respond { padding: 0.75em; float: left; }
 #respond #commentform .logged-in-as .required, #respond #commentform .comment-notes .required { float: none; }
 #respond #commentform label { float: left; display: block; line-height: 3em; font-weight: bold; }
 #respond #commentform input[type="text"], #respond #commentform textarea { float: right; width: 30em; }
