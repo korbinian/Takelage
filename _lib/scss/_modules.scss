@@ -133,7 +133,7 @@ ul.skiplinks {
 
 /* Call To Action Sticker
 ----------------------------------------------------------------------------- */
-
+/*
 .cta {
 	display: none;
 	@media (min-width: 720px)  { 
@@ -147,6 +147,13 @@ ul.skiplinks {
 			width: 50%;
 			@include box(); } } }
 
+
+*/
+
+.sidebar-front aside {
+	@include box();
+}
+
 @-webkit-keyframes fadeIn { 0% { opacity: 0; } 80% { opacity: 0; } 100% { opacity: 1; } }
    @-moz-keyframes fadeIn { 0% { opacity: 0; } 80% { opacity: 0; } 100% { opacity: 1; } }
     @-ms-keyframes fadeIn { 0% { opacity: 0; } 80% { opacity: 0; } 100% { opacity: 1; } }
@@ -154,23 +161,25 @@ ul.skiplinks {
         @keyframes fadeIn { 0% { opacity: 0; } 80% { opacity: 0; } 100% { opacity: 1; } }
 
 
-.cta .widget {
+.sidebar-front .bigtext {
   -webkit-animation: fadeIn 1s 0s ease-in both;
      -moz-animation: fadeIn 1s 0s ease-in both;
       -ms-animation: fadeIn 1s 0s ease-in both;
        -o-animation: fadeIn 1s 0s ease-in both;
           animation: fadeIn 1s 0s ease-in both; }
 
-.cta {
+.sidebar-front .bigtext {
 	overflow: hidden;	} 
 
-.cta .textwidget {
+.sidebar-front .bigtext {
 	line-height: 1;
 	text-align: center;
 	margin: 0;
 	display: block;
 	@extend .l;
 	* { margin:0; } }
+
+
 
 /* Nav-Meta
 ----------------------------------------------------------------------------- */

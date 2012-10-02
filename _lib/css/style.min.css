@@ -32,7 +32,7 @@ body { font: normal 1em/1.5em sans-serif; }
 
 .xl, .format-quote .entry { font-size: 38px; line-height: 48px; margin: 0 0 0px 0; font-size: 2.375rem; line-height: 3rem; margin: 0 0 0rem 0; }
 
-.l, .cta .textwidget, #comments .commentlist .comment:before { font-size: 26px; line-height: 36px; margin: 0 0 24px 0; font-size: 1.625rem; line-height: 2.25rem; margin: 0 0 1.5rem 0; }
+.l, .sidebar-front .bigtext, #comments .commentlist .comment:before { font-size: 26px; line-height: 36px; margin: 0 0 24px 0; font-size: 1.625rem; line-height: 2.25rem; margin: 0 0 1.5rem 0; }
 
 .m { font-size: 16px; line-height: 24px; margin: 0 0 24px 0; font-size: 1rem; line-height: 1.5rem; margin: 0 0 1.5rem 0; }
 
@@ -329,9 +329,23 @@ body.fullwidth #main #content { width: 100%; }
   .banner hgroup { margin-left: 0em; } }
 /* Call To Action Sticker
 ----------------------------------------------------------------------------- */
-.cta { display: none; }
-@media (min-width: 720px) { .cta { float: right; margin-top: 3em; display: block; float: left; width: 20em; height: 7.5em; margin-bottom: -1.5em; }
-  .cta aside { float: left; width: 50%; padding: 0.75em; } }
+/*
+.cta {
+	display: none;
+	@media (min-width: 720px)  { 
+		float: right;
+		margin-top: 2*$ratio;
+		@include col(4);
+		height: 5*$ratio;
+		margin-bottom: -$ratio;
+		aside {
+			float: left;
+			width: 50%;
+			@include box(); } } }
+
+
+*/
+.sidebar-front aside { padding: 0.75em; }
 
 @-webkit-keyframes fadeIn { 0% { opacity: 0; }
   80% { opacity: 0; }
@@ -353,12 +367,12 @@ body.fullwidth #main #content { width: 100%; }
   80% { opacity: 0; }
   100% { opacity: 1; } }
 
-.cta .widget { -webkit-animation: fadeIn 1s 0s ease-in both; -moz-animation: fadeIn 1s 0s ease-in both; -ms-animation: fadeIn 1s 0s ease-in both; -o-animation: fadeIn 1s 0s ease-in both; animation: fadeIn 1s 0s ease-in both; }
+.sidebar-front .bigtext { -webkit-animation: fadeIn 1s 0s ease-in both; -moz-animation: fadeIn 1s 0s ease-in both; -ms-animation: fadeIn 1s 0s ease-in both; -o-animation: fadeIn 1s 0s ease-in both; animation: fadeIn 1s 0s ease-in both; }
 
-.cta { overflow: hidden; }
+.sidebar-front .bigtext { overflow: hidden; }
 
-.cta .textwidget { line-height: 1; text-align: center; margin: 0; display: block; }
-.cta .textwidget * { margin: 0; }
+.sidebar-front .bigtext { line-height: 1; text-align: center; margin: 0; display: block; }
+.sidebar-front .bigtext * { margin: 0; }
 
 /* Nav-Meta
 ----------------------------------------------------------------------------- */

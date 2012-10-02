@@ -178,7 +178,7 @@ function Takelage_add_custom_styles() {
 			echo 'font-weight:' . $body_typography['style'] . ';'; 
 			?>
 		}
-		h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, nav a, .cta .textwidget, .cta .textwidget div {
+		h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, nav a, .sidebar-front .bigtext, .sidebar-front .bigtext div, .cta .textwidget div {
 			<?php 
 			$display_typography = of_get_option('heading_typography');
 			echo 'font-family:' . $display_typography['face'] . ';';
@@ -424,17 +424,17 @@ function disable_default_dashboard_widgets() {
 function Takelage_widgets_init() {
 	if(function_exists('register_sidebar')) {
 		register_sidebar( array(
-			'name'          => __( 'Hintergrund', 'Takelage' ),
-			'id'            => 'bg',
+			'name'          => __( 'Sidebar Startseite', 'Takelage' ),
+			'id'            => 'sidebar-front',
 			'before_widget' => '<aside id="%1$s" class="widget skin %2$s">',
 			'after_widget'  => "</aside>",
 			'before_title'  => '<h3>',
 			'after_title'   => '</h3>',
 		) );
 		register_sidebar( array(
-			'name'          => __( 'Sidebar Startseite', 'Takelage' ),
-			'id'            => 'sidebar-front',
-			'before_widget' => '<aside id="%1$s" class="widget skin %2$s">',
+			'name'          => __( 'Sticker Startseite', 'Takelage' ),
+			'id'            => 'sticker',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'  => "</aside>",
 			'before_title'  => '<h3>',
 			'after_title'   => '</h3>',
@@ -458,22 +458,6 @@ function Takelage_widgets_init() {
 		register_sidebar( array(
 			'name'          => __( 'Sub 3 Startseite', 'Takelage' ),
 			'id'            => 'sidebar-3-front',
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'  => "</aside>",
-			'before_title'  => '<h3>',
-			'after_title'   => '</h3>',
-		) );
-		register_sidebar( array(
-			'name'          => __( 'Sticker-1', 'Takelage' ),
-			'id'            => 'sticker-1',
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'  => "</aside>",
-			'before_title'  => '<h3>',
-			'after_title'   => '</h3>',
-		) );
-		register_sidebar( array(
-			'name'          => __( 'Sticker-2', 'Takelage' ),
-			'id'            => 'sticker-2',
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'  => "</aside>",
 			'before_title'  => '<h3>',

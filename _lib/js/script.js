@@ -233,9 +233,9 @@ $.fn.setup_navigation = function(settings) {
 
 
 $(function () {
-    $('.cta .textwidget').bigtext( {
+    $('.sidebar-front .textwidget').bigtext( {
          minfontsize: 16,
-         maxfontsize: 48
+         maxfontsize: 72
     } );
 });
 

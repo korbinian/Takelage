@@ -3,15 +3,17 @@
 
 	<?php get_template_part( 'slider' ) ?>
 	<?php get_template_part( 'news' ) ?>
-	
+
 </div>
 
 <div id="aside" >
 	<div class="sidebar-front">
 		<?php if ( ! dynamic_sidebar( 'sidebar-front' ) ) : ?>
-		<div class="widget skin"><img src="http://placehold.it/296x240"></div>
-		<div class="widget skin"><img src="http://placehold.it/296x120"></div>
-		
+		<aside class="widget"><img src="http://placehold.it/296x240"></aside>
+		<aside class="widget"><img src="http://placehold.it/296x120"></aside>
+		<?php endif; ?>
+
+		<?php if ( ! dynamic_sidebar( 'sticker' ) ) : ?>
 		<?php endif; ?>
 	</div>
 

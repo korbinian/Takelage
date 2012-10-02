@@ -55,13 +55,6 @@
 					<h2 class="tagline"><span><?php bloginfo( 'description' ); ?></span></h2>
 				</hgroup>
 			</div>
-
-			<div class="cta">
-				<?php if ( ! dynamic_sidebar( 'sticker-1' ) ) : ?>
-				<?php endif; ?>
-				<?php if ( ! dynamic_sidebar( 'sticker-2' ) ) : ?>
-				<?php endif; ?>
-			</div>
 	
 			<nav role="navigation" aria-label="Meta menu">
 				<?php wp_nav_menu( array( 'theme_location' => 'meta', 'menu_class' => 'nav-meta group' ) ); ?>
