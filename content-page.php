@@ -9,6 +9,9 @@
 
 	<?php takelage_submenu() ?>
 
+	<nav id="anchors">
+	</nav>
+
 	<div class="entry postContent entry-content">
 		<?php the_content(); ?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'Takelage' ), 'after' => '</div>' ) ); ?>

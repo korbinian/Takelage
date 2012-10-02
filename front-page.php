@@ -3,7 +3,7 @@
 
 	<?php get_template_part( 'slider' ) ?>
 	<?php get_template_part( 'news' ) ?>
-
+	
 </div>
 
 <div id="aside" >

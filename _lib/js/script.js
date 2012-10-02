@@ -1,3 +1,9 @@
+$(function() {
+ $.MagicNav($('#anchors'),$('article.page .entry h1, article.page .entry h2, article.page .entry h3, article.page .entry h4'));
+});
+
+
+
 $(function () {
     $(".slides").responsiveSlides({
         auto: false,             // Boolean: Animate automatically, true or false

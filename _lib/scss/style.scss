@@ -79,3 +79,17 @@ body {
 	}
 }
 
+
+#anchors {
+	background: #eee;
+	float: right;
+	margin: -$ratio/2 0 $ratio/2 $ratio/2;
+	@include box();
+	max-width: 4*$unit;
+	a {
+		display: block;
+		&:hover {
+			cursor: pointer;
+	}
+}
+}
