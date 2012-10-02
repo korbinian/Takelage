@@ -227,6 +227,97 @@ function optionsframework_fields() {
 			
 			break;
 
+
+		case 'body_typography':
+		
+			unset( $font_size, $font_style, $font_face, $font_color );
+		
+			$typography_defaults = array(
+				'face' => '',
+				'style' => ''
+			);
+			
+			$typography_stored = wp_parse_args( $val, $typography_defaults );
+			
+			$typography_options = array(
+				'faces' => of_recognized_body_font_faces(),
+				'styles' => of_recognized_font_styles()
+			);
+			
+			if ( isset( $value['options'] ) ) {
+				$typography_options = wp_parse_args( $value['options'], $typography_options );
+			}
+
+
+			if ( $typography_options['faces'] ) {
+				$font_face = '<select class="of-typography of-typography-face" name="' . esc_attr( $option_name . '[' . $value['id'] . '][face]' ) . '" id="' . esc_attr( $value['id'] . '_face' ) . '">';
+				$faces = $typography_options['faces'];
+				foreach ( $faces as $key => $face ) {
+					$font_face .= '<option value="' . esc_attr( $key ) . '" ' . selected( $typography_stored['face'], $key, false ) . '>' . esc_html( $face ) . '</option>';
+				}
+				$font_face .= '</select>';
+			}
+
+			if ( $typography_options['styles'] ) {
+				$font_style = '<select class="of-typography of-typography-style" name="'.$option_name.'['.$value['id'].'][style]" id="'. $value['id'].'_style">';
+				$styles = $typography_options['styles'];
+				foreach ( $styles as $key => $style ) {
+					$font_style .= '<option value="' . esc_attr( $key ) . '" ' . selected( $typography_stored['style'], $key, false ) . '>'. $style .'</option>';
+				}
+				$font_style .= '</select>';
+			}
+
+			$typography_fields = compact( 'font_face', 'font_style' );
+			$typography_fields = apply_filters( 'of_typography_fields', $typography_fields, $typography_stored, $option_name, $value );
+			$output .= implode( '', $typography_fields );
+			
+			break;
+
+		case 'display_typography':
+		
+			unset( $font_size, $font_style, $font_face, $font_color );
+		
+			$typography_defaults = array(
+				'face' => '',
+				'style' => ''
+			);
+			
+			$typography_stored = wp_parse_args( $val, $typography_defaults );
+			
+			$typography_options = array(
+				'faces' => of_recognized_display_font_faces(),
+				'styles' => of_recognized_font_styles()
+			);
+			
+			if ( isset( $value['options'] ) ) {
+				$typography_options = wp_parse_args( $value['options'], $typography_options );
+			}
+
+
+			if ( $typography_options['faces'] ) {
+				$font_face = '<select class="of-typography of-typography-face" name="' . esc_attr( $option_name . '[' . $value['id'] . '][face]' ) . '" id="' . esc_attr( $value['id'] . '_face' ) . '">';
+				$faces = $typography_options['faces'];
+				foreach ( $faces as $key => $face ) {
+					$font_face .= '<option value="' . esc_attr( $key ) . '" ' . selected( $typography_stored['face'], $key, false ) . '>' . esc_html( $face ) . '</option>';
+				}
+				$font_face .= '</select>';
+			}
+
+			if ( $typography_options['styles'] ) {
+				$font_style = '<select class="of-typography of-typography-style" name="'.$option_name.'['.$value['id'].'][style]" id="'. $value['id'].'_style">';
+				$styles = $typography_options['styles'];
+				foreach ( $styles as $key => $style ) {
+					$font_style .= '<option value="' . esc_attr( $key ) . '" ' . selected( $typography_stored['style'], $key, false ) . '>'. $style .'</option>';
+				}
+				$font_style .= '</select>';
+			}
+
+			$typography_fields = compact( 'font_face', 'font_style' );
+			$typography_fields = apply_filters( 'of_typography_fields', $typography_fields, $typography_stored, $option_name, $value );
+			$output .= implode( '', $typography_fields );
+			
+			break;
+
 		case 'background':
 
 			$background = $val;

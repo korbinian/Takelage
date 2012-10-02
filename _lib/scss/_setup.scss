@@ -2,7 +2,7 @@
 
 $sans:             alegreya, OpenSans, arial, helvetica, sans-serif;
 $serif:            Georgia, serif;
-$display:          cubano, leaguegothic,steelfish, helvetica, arial, helvetica, sans-serif;
+$display:          leaguegothic, cubano, leaguegothic,steelfish, helvetica, arial, helvetica, sans-serif;
 $caption:          alegreya, OpenSans,Verdana, sans-serif;
 $mono:             "Menlo", "Bitstream Vera Sans", Monaco, "Andale Mono", "Lucida Console", "Droid Mono", monospace;
 $icons:            fontawesome;
@@ -88,7 +88,8 @@ $ratio: 1.5em;
   @include prefix-value(background-image, linear-gradient($top, $bottom)); }
 
 @mixin transition($property:all, $duration:0.2s, $function: ease-in-out) {
-  @include prefix-property(transition, unquote($property $duration $function)); }
+  @include prefix-property(transition, unquote($property $duration $function));
+  -webkit-transform: translateZ(0); }
 
 @mixin scale($scale:1) {
   @include prefix-property(transform, scale($scale)); }

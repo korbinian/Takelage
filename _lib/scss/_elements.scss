@@ -23,7 +23,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   @include f(16,24,12);
-  font-weight: light;
+  font-weight: bold;
   text-rendering: optimizelegibility; }
 
 hgroup { 
@@ -37,7 +37,6 @@ a:link            { text-decoration: none;
                     word-wrap: break-word;
                     position: relative;
                     border-bottom:2px solid transparent;
-                    font-weight: bold;
                     outline: 2px solid transparent !important; }
 a:visited         { border-bottom: 2px solid}
 a:active          { top: 1px; }

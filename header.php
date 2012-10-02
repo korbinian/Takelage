@@ -14,18 +14,7 @@
 	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/_lib/images/icons/favicon.ico">
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo get_template_directory_uri(); ?>/_lib/images/icons/apple-touch-icon-114x114-precomposed.png">
  	<?php wp_head(); ?>
-	<style type="text/css">
-		* {
-			<?php $typography = of_get_option('body_typography'); ?>         
-			font-family: <?php echo $typography['face'] ?>;
-			font-weight: <?php echo $typography['style'] ?>; }
-		h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, nav a, .cta .textwidget, .cta .textwidget div {
-			<?php 
-			$typography = of_get_option('heading_typography');         
-			echo 'font-family: ' . $typography['face'] . ';';
-			echo 'font-weight: ' . $typography['style'] . ';'
-			?> }
-	</style>
+
 	
 </head>
 
@@ -78,10 +67,9 @@
 				<?php wp_nav_menu( array( 'theme_location' => 'meta', 'menu_class' => 'nav-meta group' ) ); ?>
 			</nav>
 
-			<nav role="navigation" aria-label="Main menu" id="nav">
+
 				<?php wp_nav_menu( array( 'theme_location' => 'main', 'menu_class' => 'nav nav-main group dropdown', 'container' => false, ) ); ?>
 				<a href="" class="back"><?php _e( 'zurück', 'Takelage' ); ?></a>
-			</nav>​	
 
 			<?php get_search_form(); ?>
 
@@ -91,3 +79,4 @@
 
 	<div id="main">
 		<div class="row">
+

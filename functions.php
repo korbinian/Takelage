@@ -29,6 +29,7 @@ require( get_template_directory() . '/_lib/codemirror/codemirror.php' );
 	add_action('wp_enqueue_scripts', 'Takelage_styles');
 	add_action('wp_enqueue_scripts', 'options_stylesheets_color_style');
 	add_action('wp_enqueue_scripts', 'options_stylesheets_typography_style');
+	add_action('wp_enqueue_scripts', 'Takelage_add_custom_styles');
 	add_action('login_head', 'Takelage_login_css');
 	add_action('init', 'Takelage_register_menu');
 	add_action('widgets_init', 'Takelage_widgets_init');
@@ -166,6 +167,30 @@ function options_stylesheets_typography_style()   {
 function Takelage_add_editor_style() {
 	add_editor_style( get_template_directory() . '/_lib/css/style.editor.css' );
 }
+
+function Takelage_add_custom_styles() {
+	?>
+	<style>
+		* {
+			<?php 
+			$body_typography = of_get_option('body_typography');
+			echo 'font-family:' . $body_typography['face'] . ';';
+			echo 'font-weight:' . $body_typography['style'] . ';'; 
+			?>
+		}
+		h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, nav a, .cta .textwidget, .cta .textwidget div {
+			<?php 
+			$display_typography = of_get_option('heading_typography');
+			echo 'font-family:' . $display_typography['face'] . ';';
+			echo 'font-weight:' . $display_typography['style'] . ';'; 
+			?>
+		}
+	</style>
+
+	<?php
+}
+
+
 
 /*	Remove 'text/css' from our enqueued stylesheet
 ------------------------------------------------------------------------------*/

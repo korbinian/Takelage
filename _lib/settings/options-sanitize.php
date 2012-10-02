@@ -221,6 +221,7 @@ function of_sanitize_font_face( $value ) {
 }
 add_filter( 'of_font_face', 'of_sanitize_font_face' );
 
+
 /**
  * Get recognized background repeat settings
  *
@@ -317,41 +318,20 @@ function of_recognized_font_sizes() {
  */
 function of_recognized_font_faces() {
 	$default = array(
-		'Arial, Helvetica, sans-serif'                                                               => 'Arial/Helvetica (websafe sans)',
-		'Verdana, Geneva, sans-serif'                                                                => 'Verdana (websafe sans)',
-		'"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Tahoma, sans-serif'        => 'Lucida (websafe sans)',
-		'Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif'                            => 'Optima (sans)',
-		'Futura, "Trebuchet MS", Arial, sans-serif'                                                 => 'Futura (sans)',
-		'"Gill Sans", "Gill Sans MT", Calibri, sans-serif'                                          => 'Gill Sans (sans)',
-		'"Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif' => 'Trebuchet (sans)',
-		'Geneva, Tahoma, Verdana, sans-serif'                                                       => 'Geneva (sans)',
-		'Segoe, "Segoe UI", "Helvetica Neue", Arial, sans-serif'                                    => 'Segoe (sans)',
-		'Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif'                            => 'Candara (sans)',
-		'Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif'                            => 'Calibri (sans)',
-		'"Franklin Gothic Medium", Arial, sans-serif'                                               => 'Franklin Gothic Medium (sans)',
-		'Tahoma, Geneva, Verdana, sans-serif'                                                       => 'Tahoma (sans)',
-
-		'Georgia, serif'                                                                            => 'Georgia (websafe serif)',
-		'"Times New Roman", serif'                                                                  => 'Times New Roman (websafe serif)',
-		'Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif'   => 'Garamond (serif)',
-		'"Lucida Bright", Georgia, serif'                                                           => 'Lucida Bright (serif)',
-		'Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif'          => 'Palatino (serif)',
-		'"Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif'                         => 'Big Caslon (serif)',
-		'Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif'                 => 'Didot (serif)',
-		'Baskerville, "Baskerville old face", "Hoefler Text", Garamond, "Times New Roman", serif'   => 'Baskerville (serif)',
-		'"Hoefler Text", "Baskerville old face", Garamond, "Times New Roman", serif'                => 'Hoefler Text (serif)',
-		'"Bodoni MT", Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif'    => 'Bodoni (serif)',
-		'"Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif'                       => 'Goudy Old Style (serif)',
-		'Constantia, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif'              => 'Constantia (serif)',
-		'"Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif'          => 'Book Antiqua (serif)',
-		'Cambria, Georgia, serif'                                                                   => 'Cambria (serif)',
-
-		'Cubano, sans-serif'                                                                         => 'Cubano (sans-serif display font-face)',
-		'edmondsans, sans-serif'                                                                     => 'Edmond Sans (sans-serif display font-face)',
-
+		'Arial, Helvetica, sans-serif'                                              => 'Sans Serif',
+		'Georgia, serif'                                                            => 'Serif',
+		'OpenSans, sans'                                                            => 'Open Sans',
+		'SourceSans, sans-serif'                                                    => 'Source Sans Pro',
+		'Alegreya, serif'                                                           => 'Alegreya',
+		'Cubano, sans-serif'                                                        => 'Cubano',
+		'leaguegothic, sans-serif'                                                  => 'League Gothic',
+		'edmondsans, sans-serif'                                                    => 'Edmond Sans',
+		'steelfish, sans-serif'                                                     => 'Steelfish'
 		);
 	return apply_filters( 'of_recognized_font_faces', $default );
 }
+
+
 
 /**
  * Get recognized font styles.
@@ -365,15 +345,15 @@ function of_recognized_font_faces() {
  */
 function of_recognized_font_styles() {
 	$default = array(
-		'100' => 'ultra-light 100',
-		'200' => 'light 200',
-		'300' => 'book 300',
-		'400' => 'normal 400',
-		'500' => 'medium 500',
-		'600' => 'semi-bold 600',
-		'700' => 'bold 700',
-		'800' => 'extra-bold 800',
-		'900' => 'ultra-bold 900',
+		'100' => '100',
+		'200' => '200',
+		'300' => '300',
+		'400' => '400',
+		'500' => '500',
+		'600' => '600',
+		'700' => '700',
+		'800' => '800',
+		'900' => '900',
 		);
 	return apply_filters( 'of_recognized_font_styles', $default );
 }
