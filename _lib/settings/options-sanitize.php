@@ -320,13 +320,28 @@ function of_recognized_font_faces() {
 	$default = array(
 		'Arial, Helvetica, sans-serif'                                              => 'Sans Serif',
 		'Georgia, serif'                                                            => 'Serif',
-		'OpenSans, sans'                                                            => 'Open Sans',
-		'SourceSans, sans-serif'                                                    => 'Source Sans Pro',
 		'Alegreya, serif'                                                           => 'Alegreya',
+		'Asap, serif'                                                               => 'Asap',
+		'BebasNeue, serif'                                                          => 'BebasNeue',
+		'Bitter, serif'                                                             => 'Bitter',
+		'Crimson, serif'                                                            => 'Crimson',
 		'Cubano, sans-serif'                                                        => 'Cubano',
-		'leaguegothic, sans-serif'                                                  => 'League Gothic',
-		'edmondsans, sans-serif'                                                    => 'Edmond Sans',
-		'steelfish, sans-serif'                                                     => 'Steelfish'
+		'DroidSerif, sans-serif'                                                    => 'Droid Serif',
+		'GentiumBasic, sans-serif'                                                  => 'Gentium basic',
+		'Lato, sans-serif'                                                          => 'Lato',
+		'LeagueGothic, sans-serif'                                                  => 'League Gothic',
+		'Lora, sans-serif'                                                          => 'Lora',
+		'Merriweather, sans-serif'                                                  => 'Merriweather',
+		'Neuton, sans-serif'                                                        => 'Neuton',
+		'OSP-DIN, sans'                                                             => 'OSP-DIN',
+		'PTsans, sans'                                                              => 'PTsans',
+		'PTserif, sans'                                                             => 'PTserif',
+		'Rosario, sans'                                                             => 'Rosario',
+		'Signika, sans'                                                             => 'Signika',
+		'OpenSans, sans'                                                            => 'Open Sans',
+		'SourceSansPro, sans-serif'                                                 => 'Source Sans Pro',
+		'Ubuntu, sans-serif'                                                        => 'Ubuntu',
+		'Vollkorn, sans-serif'                                                      => 'Vollkorn',
 		);
 	return apply_filters( 'of_recognized_font_faces', $default );
 }
@@ -345,15 +360,9 @@ function of_recognized_font_faces() {
  */
 function of_recognized_font_styles() {
 	$default = array(
-		'100' => '100',
-		'200' => '200',
-		'300' => '300',
-		'400' => '400',
-		'500' => '500',
-		'600' => '600',
-		'700' => '700',
-		'800' => '800',
-		'900' => '900',
+		'light'  => 'light',
+		'normal' => 'normal',
+		'bold'   => 'bold'
 		);
 	return apply_filters( 'of_recognized_font_styles', $default );
 }

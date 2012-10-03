@@ -1,4 +1,6 @@
-@include font-face(OpenSans, '../fonts/open_sans/OpenSans-Regular-webfont', 400, normal);
-@include font-face(OpenSans, '../fonts/open_sans/OpenSans-Italic-webfont', 400, italic);
-@include font-face(OpenSans, '../fonts/open_sans/OpenSans-Bold-webfont', 700, normal);
-@include font-face(OpenSans, '../fonts/open_sans/OpenSans-BoldItalic-webfont', 700, italic);
+@include font-face(OpenSans, '../fonts/OpenSans/OpenSans-Light-webfont', light, normal);
+@include font-face(OpenSans, '../fonts/OpenSans/OpenSans-LightItalic-webfont', light, italic);
+@include font-face(OpenSans, '../fonts/OpenSans/OpenSans-Regular-webfont', normal, normal);
+@include font-face(OpenSans, '../fonts/OpenSans/OpenSans-Italic-webfont', normal, italic);
+@include font-face(OpenSans, '../fonts/OpenSans/OpenSans-Bold-webfont', bold, normal);
+@include font-face(OpenSans, '../fonts/OpenSans/OpenSans-BoldItalic-webfont', bold, italic);

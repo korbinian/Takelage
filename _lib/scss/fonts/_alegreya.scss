@@ -1,4 +1,4 @@
-@include font-face(alegreya, '../fonts/alegreya/Alegreya-Regular-webfont', 400, normal);
-@include font-face(alegreya, '../fonts/alegreya/Alegreya-Italic-webfont', 400, italic);
-@include font-face(alegreya, '../fonts/alegreya/Alegreya-Bold-webfont', 700, normal);
-@include font-face(alegreya, '../fonts/alegreya/Alegreya-BoldItalic-webfont', 700, italic);
+@include font-face(Alegreya, '../fonts/Alegreya/Alegreya-Regular-webfont', normal, normal);
+@include font-face(Alegreya, '../fonts/Alegreya/Alegreya-Italic-webfont', normal, italic);
+@include font-face(Alegreya, '../fonts/Alegreya/Alegreya-Bold-webfont', bold, normal);
+@include font-face(Alegreya, '../fonts/Alegreya/Alegreya-BoldItalic-webfont', bold, italic);
