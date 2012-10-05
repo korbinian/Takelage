@@ -1,0 +1,82 @@
+@import "setup";
+@import "fonts";
+
+//backgrounds
+
+body {
+	background: darken($color-secondary, 5%);
+}
+
+#header, #main {
+	background: $white;
+}
+
+a, .bigtext {
+	font-weight: bold;
+}
+
+
+
+
+
+
+
+
+.toggle {
+	display: none !important;
+}
+
+
+.cta span {
+	text-transform: uppercase;
+}
+
+.cta {
+  font-weight: bold;
+}
+
+
+::-moz-selection { 
+	color:invert($color-selection);
+	background: $color-selection; }
+::selection { 
+	color:invert($color-selection);
+	background: $color-selection; }
+
+a {
+	color: $black;
+}
+
+
+
+#sub {
+	background: $color-secondary;
+	color: #fff;
+	a {
+		color: #fff;
+	}
+}
+
+#footer {
+	background: darken($color-secondary, 10%);
+	color: $white;
+	a {
+		color: #fff;
+	}
+}
+
+
+
+#anchors {
+	background: #eee;
+	float: right;
+	margin: -$ratio/2 0 $ratio/2 $ratio/2;
+	@include box();
+	max-width: 4*$unit;
+	a {
+		display: block;
+		&:hover {
+			cursor: pointer;
+	}
+}
+}

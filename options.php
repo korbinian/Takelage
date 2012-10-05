@@ -82,9 +82,9 @@ function optionsframework_options() {
 		'type' => 'heading');
 
 	$color_stylesheet = options_stylesheets_get_file_list(
-	    get_stylesheet_directory() . '/_lib/css/skins/colors/', // $directory_path
+	    get_stylesheet_directory() . '/_lib/css/skins/', // $directory_path
 	    'css', // $filetype
-	    get_stylesheet_directory_uri() . '/_lib/css/skins/colors/' // $directory_uri
+	    get_stylesheet_directory_uri() . '/_lib/css/skins/' // $directory_uri
 	);
 	$options[] = array( "name" => "Colors",
 	    "id" => "color_stylesheet",

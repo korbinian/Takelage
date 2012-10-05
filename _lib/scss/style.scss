@@ -8,7 +8,7 @@
 @import "print";
 //@import "diagnostics";
 @import "grid";
-@import "fonts";
+
 
 
 
@@ -24,72 +24,3 @@
 }
 
 
-.cta span {
-	text-transform: uppercase;
-}
-
-.cta {
-  font-weight: bold;
-}
-
-
-::-moz-selection { 
-	color:invert($color-selection);
-	background: $color-selection; }
-::selection { 
-	color:invert($color-selection);
-	background: $color-selection; }
-
-a {
-	color: $black;
-}
-
-body {
-	background: $white;
-}
-
-#main {
-	background: $white;
-}
-
-#sub {
-	background: $color-secondary;
-	color: #fff;
-	a {
-		color: #fff;
-	}
-}
-
-#footer {
-	background: darken($color-secondary, 10%);
-	color: $white;
-	a {
-		color: #fff;
-	}
-}
-
-.nav-main {
-	li {
-		a {
-			background: $white;
-		}
-		.sub-menu {
-			background: $white;
-		}
-	}
-}
-
-
-#anchors {
-	background: #eee;
-	float: right;
-	margin: -$ratio/2 0 $ratio/2 $ratio/2;
-	@include box();
-	max-width: 4*$unit;
-	a {
-		display: block;
-		&:hover {
-			cursor: pointer;
-	}
-}
-}
