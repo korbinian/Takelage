@@ -164,6 +164,8 @@ body { background: black; }
 
 a, .bigtext { font-weight: bold; }
 
+body { -webkit-mask-image: url(../images/mask.png); }
+
 .toggle { display: none !important; }
 
 .cta span { text-transform: uppercase; }
