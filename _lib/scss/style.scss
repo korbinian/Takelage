@@ -8,3 +8,22 @@
 @import "print";
 //@import "diagnostics";
 @import "grid";
+
+
+#anchors {
+	float: right;
+	max-width: 4*$unit;
+	margin: -$ratio/2 0 $ratio $ratio;
+	padding: $ratio/2;
+	a {
+		display: block;
+		&:hover {
+			border: 0px solid;
+			color: $color-secondary;
+		}
+		&:active {
+			border: 0 solid;
+			outline: 0 solid;
+		}
+	}
+}

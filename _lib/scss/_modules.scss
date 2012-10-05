@@ -76,13 +76,13 @@ ul.skiplinks {
       opacity: 0;
       @include box();
       @include transition();  
-
       &:after {
         font-family: $icons;
         content: " \f063"; }
       &:focus {
         left: -19em;
         opacity: 1;
+        background: $white;
         @include transition(); } } } } 
 
 }
@@ -139,33 +139,16 @@ ul.skiplinks {
 
 /* Call To Action Sticker
 ----------------------------------------------------------------------------- */
-/*
-.cta {
-	display: none;
-	@media (min-width: 720px)  { 
-		float: right;
-		margin-top: 2*$ratio;
-		@include col(4);
-		height: 5*$ratio;
-		margin-bottom: -$ratio;
-		aside {
-			float: left;
-			width: 50%;
-			@include box(); } } }
-
-
-*/
 
 .sidebar-front aside {
 	@include box();
-}
+	font-weight: $bold; }
 
 @-webkit-keyframes fadeIn { 0% { opacity: 0; } 80% { opacity: 0; } 100% { opacity: 1; } }
    @-moz-keyframes fadeIn { 0% { opacity: 0; } 80% { opacity: 0; } 100% { opacity: 1; } }
     @-ms-keyframes fadeIn { 0% { opacity: 0; } 80% { opacity: 0; } 100% { opacity: 1; } }
      @-o-keyframes fadeIn { 0% { opacity: 0; } 80% { opacity: 0; } 100% { opacity: 1; } }
         @keyframes fadeIn { 0% { opacity: 0; } 80% { opacity: 0; } 100% { opacity: 1; } }
-
 
 .sidebar-front .bigtext {
   -webkit-animation: fadeIn 1s 0s ease-in both;
@@ -184,8 +167,6 @@ ul.skiplinks {
 	display: block;
 	@extend .l;
 	* { margin:0; } }
-
-
 
 /* Nav-Meta
 ----------------------------------------------------------------------------- */
@@ -221,43 +202,33 @@ ul.skiplinks {
 /* Nav-Main
 ----------------------------------------------------------------------------- */
 
-.nav-main {
-	@media (min-width: 720px)  { 
-		@include col(8);
-		@include box();
-		li {
-			float: left;
-			width: auto;
-			a {
-				display: block;
-				@include box(); } }	} }
-
 @media screen and (min-width:720px) { 
 
 .nav-main {
   @include col(8);
+	@include box();
   li {
     float: left;
     width: auto;
     position: relative;
     margin-right: 2px;
     a {
-    	border: 2px solid;
-      padding: -webkit-calc(.75em - 2px);
-      padding: -moz-calc(.75em - 2px);
-      padding: calc(.75em - 2px);
-      z-index: 99; }
+    	background: $black;
+    	color: $white;
+      z-index: 99;
+      display: block;
+			@include box();
+			border-bottom: 0 solid;
+			&:hover {
+				background: $color-primary; }
+			&:focus {
+				background: $color-primary;
+				color: $black; } }
     .sub-menu {
       position: absolute;
       left: -99em;
-      margin-top: -2px;
       width: 3*$unit;
       z-index: 999;
-      padding: -webkit-calc(.75em - 2px) 0;
-      padding: -moz-calc(.75em - 2px) 0;
-      padding: calc(.75em - 2px) 0; 
-      border: 2px solid;
-      z-index: 98;
       li {
         position: relative;
         width: 100%;
@@ -266,15 +237,17 @@ ul.skiplinks {
         ul.show-menu {
           left: 3*$unit;
           top: 0; } }
-      a {
-        padding: 0 $ratio/2;
-        border: 0 solid; } }
+      a { border: 0 solid; } }
     &:hover .sub-menu, 
     &:focus .sub-menu, 
     ul.show-menu {
       left: 0;
       .sub-menu {
-        left: -99em; } } } }
+        left: -99em; } } 
+  &.current-menu-item a {
+  	background: $color-primary;
+  	color: $black;
+  } } }
 
 }
 
@@ -510,12 +483,15 @@ ul li:before {
 				position: absolute;
 				bottom: 0;
 				@include box();
+				background: $white;
+				background: rgba(0,0,0,.5);
 				h2 {
 					margin: 0;
 					a {
-						background: $white;
-						padding: 0 5px;
-						border-bottom: 2px solid; } } } } } }
+						color: $white;
+						text-shadow: 1px 1px 0 #000;
+						&:hover {
+							color: $color-primary; } } } } } } }
 
 .slides_tabs {
 	position: absolute;
@@ -527,14 +503,17 @@ ul li:before {
 		float: left;
 		a {
 			display: block;
-			width: $ratio;
-			height: $ratio;
+			width: $ratio/2;
+			height: $ratio/2;
+			@media (max-width: 720px)  { 
+				width: $ratio;
+				height: $ratio; }
 			text-align: center;
 			text-indent: -999em;
 			margin-left: 2px;
 			background: transparent;
 			background: rgba(255,255,255,.2);
-			border: 2px solid #000; }
+			border-radius: 100%; }
 		&.slides_here {
 			a {
 				background: #fff;

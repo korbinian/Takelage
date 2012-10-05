@@ -158,7 +158,7 @@
 
 @font-face { font-family: Vollkorn; src: url("../fonts/Vollkorn/Vollkorn-BoldItalic-webfont.eot"); src: url("../fonts/Vollkorn/Vollkorn-BoldItalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Vollkorn/Vollkorn-BoldItalic-webfont.woff") format("woff"), url("../fonts/Vollkorn/Vollkorn-BoldItalic-webfont.ttf") format("truetype"), url("../fonts/Vollkorn/Vollkorn-BoldItalic-webfont.svg#Vollkorn") format("svg"); font-weight: bold; font-style: italic; }
 
-body { background: #340033; }
+body { background: black; }
 
 #header, #main { background: white; }
 
@@ -176,10 +176,10 @@ a, .bigtext { font-weight: bold; }
 
 a { color: black; }
 
-#sub { background: #4d004d; color: #fff; }
+#sub { background: black; color: #fff; }
 #sub a { color: #fff; }
 
-#footer { background: #1a001a; color: white; }
+#footer { background: black; color: white; }
 #footer a { color: #fff; }
 
 #anchors { background: #eee; float: right; margin: -0.75em 0 0.75em 0.75em; padding: 0.75em; max-width: 20em; }

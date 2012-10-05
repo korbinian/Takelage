@@ -33,18 +33,21 @@ hgroup {
 /* Links
 ----------------------------------------------------------------------------- */
 
-a:link            { text-decoration: none;
+a                 { font-weight: bold;
+                    cursor: pointer;
+                    color: $color-primary;
+                    text-decoration: none;
                     word-wrap: break-word;
                     position: relative;
-                    border-bottom:2px solid transparent;
-                    outline: 2px solid transparent !important; }
-a:visited         { border-bottom: 2px solid}
+                    @include transition(); }
+a:visited         { color: $color-primary; }
 a:active          { top: 1px; }
-a:focus           { outline: 2px solid !important;
+a:focus           { outline: 2px solid $black !important;
                     outline: 5px auto -webkit-focus-ring-color;
                     @include transition();
                     outline-offset: -2px; }
-a:hover, a:active { outline: 0; }
+a:hover, a:active { color: $color-secondary;
+                    @include transition(); }
 
 #header a {
   display: block; }
@@ -169,11 +172,16 @@ hr {
 
 img, embed, object, video { max-width: 100% !important; _width: 100%; }
 img { 
+  -webkit-filter: saturate(95%);
+  @include transition();
   border: 0; 
   -ms-interpolation-mode: bicubic; 
   vertical-align: middle; 
   height: auto;
-  @include image-rendering(); }
+  @include image-rendering();
+  &:hover {
+    -webkit-filter: saturate(120%);
+    @include transition(); } }
 
 .entry img {
   margin: 0 $ratio $ratio 0;
