@@ -164,9 +164,8 @@ function options_stylesheets_typography_style()   {
 	}
 }
 
-function Takelage_add_editor_style() {
-	add_editor_style( get_template_directory() . '/_lib/css/style.editor.css' );
-}
+add_editor_style( '_lib/css/style.editor.css' );
+
 
 function Takelage_add_custom_styles() {
 	?>

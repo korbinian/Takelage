@@ -1,5 +1,8 @@
 @import "setup";
 @import "reset";
-@import "fonts";
 @import "elements";
 
+.mceContentBody {
+	padding: $ratio;
+	width: 616px;
+}
