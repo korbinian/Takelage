@@ -297,12 +297,13 @@ body.fullwidth #main #content { width: 100%; }
 /* Dropdown mobile
 ----------------------------------------------------------------------------- */
 @media (max-width: 720px) { .skiplinks { position: relative; z-index: 1000; }
-  .skiplinks li a { padding: 0.75em; }
+  .skiplinks li a { padding: 0.75em; color: white; }
   .skiplinks li a.jump-nav { float: right; z-index: 1002; }
   .skiplinks li a.jump-content { float: left; z-index: 1003; }
-  #nav { position: absolute; top: 0; padding-top: 3em; z-index: 999; width: 100%; }
+  .jump-nav { background: black; color: white; }
+  #nav { position: absolute; top: 0; padding-top: 3em; z-index: 999; width: 100%; background: black; }
   #nav .sub-menu { display: none; }
-  #nav a { overflow: hidden; height: 0; line-height: 0; padding: 0 0.75em; }
+  #nav a { color: white; overflow: hidden; height: 0; line-height: 0; padding: 0 0.75em; }
   #nav:target { z-index: 1005; }
   #nav:target a { line-height: 3em; height: 3em; position: relative; z-index: 1004; -webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -ms-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out; -webkit-transform: translateZ(0); }
   #nav:target .back { position: absolute; top: 0; right: 0; z-index: 1006; } }
@@ -545,7 +546,7 @@ ul li:before { content: "" !important; }
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; } }
-:target { background: -webkit-linear-gradient(left, black, transparent 1px), -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), transparent 1px), -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), transparent 1px), -webkit-linear-gradient(left, rgba(0, 0, 0, 0.1), transparent 1px), -webkit-linear-gradient(left, rgba(0, 0, 0, 0.1), transparent 1px), -webkit-linear-gradient(rgba(0, 0, 0, 0.1), transparent 1px); background-size: 5em, 5em, 5em, 5em, 5em, 1.5em; background-position: 0 0, 0.75em 0, -0.75em 0, 1.5em 0, -1.5em 0; }
+#page:target { background: -webkit-linear-gradient(left, black, transparent 1px), -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), transparent 1px), -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), transparent 1px), -webkit-linear-gradient(left, rgba(0, 0, 0, 0.1), transparent 1px), -webkit-linear-gradient(left, rgba(0, 0, 0, 0.1), transparent 1px), -webkit-linear-gradient(top, rgba(0, 0, 0, 0.1), transparent 1px); background-size: 5em, 5em, 5em, 5em, 5em, 1.5em; background-position: 0 0, 0.75em 0, -0.75em 0, 1.5em 0, -1.5em 0; }
 
 @media screen and (min-width: 720px) { .toggle { display: block !important; position: fixed; bottom: 0; right: 0; }
   .toggle a { color: transparent; width: 3em; height: 3em; }
