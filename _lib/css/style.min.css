@@ -545,13 +545,10 @@ ul li:before { content: "" !important; }
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; } }
-:target { background: -webkit-linear-gradient(left, black 0, transparent 1px), -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0, transparent 1px), -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0, transparent 1px), -webkit-linear-gradient(left, rgba(0, 0, 0, 0.1) 0, transparent 1px), -webkit-linear-gradient(left, rgba(0, 0, 0, 0.1) 0, transparent 1px), -webkit-linear-gradient(rgba(0, 0, 0, 0.1) 0, transparent 1px); background-size: 5em, 5em, 5em, 5em, 5em, 1.5em; background-position: 0 0, 0.75em 0, -0.75em 0, 1.5em 0, -1.5em 0; }
+:target { background: -webkit-linear-gradient(left, black, transparent 1px), -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), transparent 1px), -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), transparent 1px), -webkit-linear-gradient(left, rgba(0, 0, 0, 0.1), transparent 1px), -webkit-linear-gradient(left, rgba(0, 0, 0, 0.1), transparent 1px), -webkit-linear-gradient(rgba(0, 0, 0, 0.1), transparent 1px); background-size: 5em, 5em, 5em, 5em, 5em, 1.5em; background-position: 0 0, 0.75em 0, -0.75em 0, 1.5em 0, -1.5em 0; }
 
 @media screen and (min-width: 720px) { .toggle { display: block !important; position: fixed; bottom: 0; right: 0; }
   .toggle a { color: transparent; width: 3em; height: 3em; }
   .toggle a:before { font-family: fontawesome; content: "\f04c"; color: #000; display: block; text-align: center; line-height: 1.5em; font-size: 2em; }
   :target .on, .off { display: none; }
   :target .off, .on { display: block; } }
-.logo-small { width: 6em; height: 6em; }
-
-#footer .logo-small { position: absolute; top: -0.75em; right: 1.5em; }

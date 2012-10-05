@@ -61,8 +61,10 @@
 			</nav>
 
 
-				<?php wp_nav_menu( array( 'theme_location' => 'main', 'menu_class' => 'nav nav-main group dropdown', 'container' => false, ) ); ?>
-				<a href="" class="back"><?php _e( 'zurück', 'Takelage' ); ?></a>
+			<nav role="navigation" aria-label="Main menu" id="nav">
+			<?php wp_nav_menu( array( 'theme_location' => 'main', 'menu_class' => 'nav nav-main group dropdown', 'container' => false, ) ); ?>
+			<a href="" class="back"><?php _e( 'zurück', 'Takelage' ); ?></a>
+			</nav>
 
 			<?php get_search_form(); ?>
 

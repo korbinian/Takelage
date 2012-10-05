@@ -8,19 +8,3 @@
 @import "print";
 //@import "diagnostics";
 @import "grid";
-
-
-
-
-.logo-small {
-	width: $ratio*4;
-	height: $ratio*4;
-}
-
-#footer .logo-small {
-	position: absolute;
-	top: -.5*$ratio;
-	right: $ratio;
-}
-
-
