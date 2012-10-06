@@ -48,6 +48,8 @@ a:focus           { outline: 2px solid $black !important;
                     outline-offset: -2px; }
 a:hover, a:active { color: $color-secondary;
                     @include transition(); }
+a:before, a:after { color: $color-secondary; }
+
 
 #header a {
   display: block; }

@@ -59,6 +59,8 @@ a:focus { outline: 2px solid black !important; outline: 5px auto -webkit-focus-r
 
 a:hover, a:active { color: black; -webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -ms-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out; -webkit-transform: translateZ(0); }
 
+a:before, a:after { color: black; }
+
 #header a { display: block; }
 
 #content a:after { line-height: 0; padding-right: 3px; font-family: fontawesome; }

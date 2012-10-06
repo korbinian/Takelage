@@ -118,7 +118,7 @@ ul.skiplinks {
     @include box();
     @include col(2); }
   hgroup {
-  	margin: $ratio 0 $ratio 0;
+  	margin: 2*$ratio 0 $ratio 0;
     @include shift(2); } }
 
 }
@@ -141,8 +141,7 @@ ul.skiplinks {
 ----------------------------------------------------------------------------- */
 
 .sidebar-front aside {
-	@include box();
-	font-weight: $bold; }
+	@include box(); }
 
 @-webkit-keyframes fadeIn { 0% { opacity: 0; } 80% { opacity: 0; } 100% { opacity: 1; } }
    @-moz-keyframes fadeIn { 0% { opacity: 0; } 80% { opacity: 0; } 100% { opacity: 1; } }
@@ -157,16 +156,15 @@ ul.skiplinks {
        -o-animation: fadeIn 1s 0s ease-in both;
           animation: fadeIn 1s 0s ease-in both; }
 
-.sidebar-front .bigtext {
-	overflow: hidden;	} 
-
-.sidebar-front .bigtext {
+.sticker {
+	font-weight: $bold;
+	background: $color-primary;
 	line-height: 1;
 	text-align: center;
-	margin: 0;
 	display: block;
-	@extend .l;
-	* { margin:0; } }
+	@extend .xl;
+	* { margin:0; }
+}
 
 /* Nav-Meta
 ----------------------------------------------------------------------------- */
@@ -181,16 +179,24 @@ ul.skiplinks {
   	@include shift(2);
   	li {
   		float: left;
+  		margin-right: 2px;
   		a {
+  			background: $black;
+  			color: $white;
   			border: 0 solid;
   			display: block;
-  			@include box(); } } }
+  			@include box();
+  			&:hover {
+  				background: $color-primary;
+  				&:before {
+  					color: $color-secondary; } } } } }
   @media (min-width: 960px)  { 
   	@include shift(0);
   	@include col(12); } }
 
 .nav-meta {
   li a:before {
+  	color: $color-primary;
     font-family: $icons;
     padding-right: 5px; }
   .twitter a:before  { content: "\f099"; }
@@ -291,39 +297,7 @@ ul.skiplinks {
   	float: right;
   	@include col(4); } }
 
-/* Tabs
-------------------------------------------------------------------------------*/
 
-#newsbox {
-	@include box();
-	float: left;
-	width: 100%; }
-
-.tabs {
-	float: left;
-	margin: 0;
-	width: auto; }
-
-.tabs li {
-	float: left;
-	margin-right: 2px !important;
-	a {
-		display: block;
-		@include box();
-		padding: -webkit-calc(.75em - 2px);
-  	padding: -moz-calc(.75em - 2px);
-  	padding: calc(.75em - 2px);
-  	border: 2px solid; } }
-
-.pane {
-	@include box();
-	padding: -webkit-calc(.75em - 2px);
-  padding: -moz-calc(.75em - 2px);
-  padding: calc(.75em - 2px);
-	border: 2px solid;
-	margin-top: -2px;
-	float: left;
-	width: 100%; }
 
 /* Article
 ------------------------------------------------------------------------------*/
@@ -358,6 +332,7 @@ ul.skiplinks {
 ------------------------------------------------------------------------------*/
 
 #nav-top {
+	@include box();
   a:after { font-family: $icons; }
   @media (min-width: 960px) { 
     float: left;
@@ -365,7 +340,6 @@ ul.skiplinks {
     text-align: right;
     margin-left: -$unit !important;
     padding: 0 $ratio/2;
-    @include box();
     @include f(26,36,24);
     a { display: inline-block; } } }
 
@@ -576,7 +550,10 @@ ul li:before {
 .newslist {
 	@include box();
 	* {
-		margin-bottom: 0; } }
+		margin-bottom: 0; }
+	li {
+		margin-bottom: 2*$ratio !important;
+	} }
 
 /* Anchorbox
 ------------------------------------------------------------------------------*/

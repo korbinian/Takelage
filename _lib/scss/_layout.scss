@@ -10,11 +10,24 @@ html {
 
 .row {
   position: relative;
-  @media (max-width: 720px)  { max-width: 40em; }  
+  @media (max-width: 720px)  { max-width: 100%; }  
   @media (min-width: 720px)  { @include col(12); }  
   @media (min-width: 960px)  { @include shift(4); } }
 
 #header, #main, #sub, #footer { @include clearfix(); }
+
+body {
+  background: $color-secondary; }
+
+#header, #main {
+  background: $white; }
+
+#sub {
+  background: lighten($color-secondary, 20%);
+  color: $white; }
+
+#footer {
+  color :$white; }
 
 /* Main
 ----------------------------------------------------------------------------- */
@@ -50,9 +63,11 @@ html {
           margin-left: -4*$unit;
           a { text-align: right; } } } } }
   #aside {
+    @include box();
     @extend .group;
     @include col(4);
-    @media (min-width: 720px) {  } } }
+    @media (max-width: 720px) { 
+      width: 100%; } } }
 
 /* Full-width
 ----------------------------------------------------------------------------- */
@@ -63,9 +78,12 @@ body.fullwidth #main #content{
 /* Sub
 ----------------------------------------------------------------------------- */
 
+
 #sub .col { 
   padding: $ratio/2;
-  @include col(4); }
+  @include col(4);
+  @media (max-width: 720px) { 
+    width: 100%; } }
 
 /* Footer
 ----------------------------------------------------------------------------- */
