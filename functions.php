@@ -30,6 +30,7 @@ require( get_template_directory() . '/_lib/codemirror/codemirror.php' );
 	add_action('wp_enqueue_scripts', 'options_stylesheets_color_style');
 	add_action('wp_enqueue_scripts', 'options_stylesheets_typography_style');
 	add_action('wp_enqueue_scripts', 'Takelage_add_custom_styles');
+	add_action('after_setup_theme', 'Takelage_add_editor_styles');  
 	add_action('login_head', 'Takelage_login_css');
 	add_action('init', 'Takelage_register_menu');
 	add_action('widgets_init', 'Takelage_widgets_init');
@@ -164,8 +165,9 @@ function options_stylesheets_typography_style()   {
 	}
 }
 
-add_editor_style( '_lib/css/style.editor.css' );
-
+function Takelage_add_editor_styles() {  
+    add_editor_style( '_lib/css/style.editor.css' ); 
+}
 
 function Takelage_add_custom_styles() {
 	?>
