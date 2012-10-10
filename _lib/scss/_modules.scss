@@ -157,7 +157,6 @@ ul.skiplinks {
           animation: fadeIn 1s 0s ease-in both; }
 
 .sticker {
-	font-weight: $bold;
 	background: $color-primary;
 	line-height: 1;
 	text-align: center;
@@ -413,8 +412,7 @@ ul li:before {
 		label {
 			float: left;
 			display: block;
-			line-height: 2*$ratio;
-			font-weight: bold; }
+			line-height: 2*$ratio; }
 		input[type="text"], textarea  {
 			float: right;
 			width: 6*$unit;

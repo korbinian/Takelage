@@ -1,16 +1,33 @@
-/* ELEMENTS
------------------------------------------------------------------------------ */
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; }
+* { @include box-sizing(border-box); }
 
-$icons: fontawesome;
+::selection, ::-moz-selection { 
+  text-shadow: none;
+  background: $black;
+  color: $white;  }
 
-/* TYPOGRAPHY
------------------------------------------------------------------------------ */
 @import "fonts/fontawesome";
 
+html {
+  font-size: 12px;
+  -webkit-text-size-adjust: 100%; 
+  -ms-text-size-adjust: 100%;
+  overflow-y: scroll;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto; }
+
+
 body { 
+  margin: 0;
+  color: $black;
   font: normal #{1em}/#{$ratio} sans-serif; }
 
-/* Font Sizes
+/* Headings
 ----------------------------------------------------------------------------- */
 
 .xxl { @include f(48,48,24); }
@@ -23,19 +40,18 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   @include f(16,24,12);
-  font-weight: bold;
+  font-weight: light;
   text-rendering: optimizelegibility; }
 
 hgroup { 
-  h1, h2 { margin: 0; } 
-  h2 { font-weight: normal;} }
+  h1, h2 { margin: 0; }  }
 
 /* Links
 ----------------------------------------------------------------------------- */
 
-a                 { font-weight: bold;
+a                 { 
                     cursor: pointer;
-                    color: $color-primary;
+                    color: $black;
                     text-decoration: none;
                     word-wrap: break-word;
                     position: relative;
@@ -322,4 +338,23 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   color: #000; }
 
+/* Print
+----------------------------------------------------------------------------- */
+
+@media print {
+
+    * { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; }
+    a, a:visited { text-decoration: underline; }
+    a[href]:after { content: " (" attr(href) ")"; }
+    abbr[title]:after { content: " (" attr(title) ")"; }
+    .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+    pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+    thead { display: table-header-group; }
+    tr, img { page-break-inside: avoid; }
+    img { max-width: 100% !important; }
+    @page { margin: 0.5cm; }
+    p, h2, h3 { orphans: 3; widows: 3; }
+    h2, h3 { page-break-after: avoid; }
+
+}
       

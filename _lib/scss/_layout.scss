@@ -16,17 +16,13 @@ html {
 
 #header, #main, #sub, #footer { @include clearfix(); }
 
-body {
-  background: $color-secondary; }
-
-#header, #main {
-  background: $white; }
 
 #sub {
   background: lighten($color-secondary, 20%);
   color: $white; }
 
 #footer {
+  background: $color-secondary;
   color :$white; }
 
 /* Main
@@ -48,8 +44,7 @@ body {
           width: 100%;
           @media (min-width: 960px) { text-align: right; }
           a { 
-            padding: 0;
-            font-weight: bold; }
+            padding: 0; }
           li { margin: 0 !important; 
             a { 
               font-weight: normal; } } }

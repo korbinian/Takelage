@@ -1,3 +1,10 @@
+/* utility classes ---------------------------------------------------------------------------- */
+.hidden { position: absolute; font: 0/0 a; color: transparent; text-shadow: none; background-color: transparent; border: 0; }
+
+.skin { display: block; padding: 0.75em; }
+
+.group { float: left; width: 100%; }
+
 @font-face { font-family: Alegreya; src: url("../fonts/Alegreya/Alegreya-Regular-webfont.eot"); src: url("../fonts/Alegreya/Alegreya-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Alegreya/Alegreya-Regular-webfont.woff") format("woff"), url("../fonts/Alegreya/Alegreya-Regular-webfont.ttf") format("truetype"), url("../fonts/Alegreya/Alegreya-Regular-webfont.svg#Alegreya") format("svg"); font-weight: normal; font-style: normal; }
 
 @font-face { font-family: Alegreya; src: url("../fonts/Alegreya/Alegreya-Italic-webfont.eot"); src: url("../fonts/Alegreya/Alegreya-Italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Alegreya/Alegreya-Italic-webfont.woff") format("woff"), url("../fonts/Alegreya/Alegreya-Italic-webfont.ttf") format("truetype"), url("../fonts/Alegreya/Alegreya-Italic-webfont.svg#Alegreya") format("svg"); font-weight: normal; font-style: italic; }
@@ -158,6 +165,8 @@
 
 @font-face { font-family: Vollkorn; src: url("../fonts/Vollkorn/Vollkorn-BoldItalic-webfont.eot"); src: url("../fonts/Vollkorn/Vollkorn-BoldItalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Vollkorn/Vollkorn-BoldItalic-webfont.woff") format("woff"), url("../fonts/Vollkorn/Vollkorn-BoldItalic-webfont.ttf") format("truetype"), url("../fonts/Vollkorn/Vollkorn-BoldItalic-webfont.svg#Vollkorn") format("svg"); font-weight: bold; font-style: italic; }
 
+.logo, .nav-main a, .nav-meta a, .bigtext, h1, h2, h3, h4, h5, #footer, #sub { -webkit-mask-image: url(../../images/mask.png); }
+
 /*
 body {
 	background: darken($color-secondary, 5%);
@@ -174,8 +183,7 @@ a, .bigtext {
 
 
 
-body {
-	-webkit-mask-image: url(../images/mask.png); }
+
 
 
 

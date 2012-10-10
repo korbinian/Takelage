@@ -1,25 +1,40 @@
-/*
-body:before {
+// Grid
+
+#page:target {
+   background: 
+    -webkit-linear-gradient(left, rgba(0,0,0,1),  transparent 1px),
+    -webkit-linear-gradient(left, rgba(0,0,0,.5), transparent 1px),
+    -webkit-linear-gradient(left, rgba(0,0,0,.5), transparent 1px),
+    -webkit-linear-gradient(left, rgba(0,0,0,.1), transparent 1px),
+    -webkit-linear-gradient(left, rgba(0,0,0,.1), transparent 1px),
+    -webkit-linear-gradient(top,  rgba(0,0,0,.1), transparent 1px);
+  background-size: $unit, $unit, $unit, $unit, $unit, $ratio;
+  background-position: 0 0, $ratio/2 0, -$ratio/2 0, $ratio 0, -$ratio 0; }
+
+@media screen and (min-width:720px) { 
+
+.toggle {
+  display: block !important;
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 4;
-  background: #000;
-  color: #fff;
-  padding: $ratio/4;
-  @media (min-width: 320px)  { content: "320px"; } 
-  @media (min-width: 480px)  { content: "480px"; } 
-  @media (min-width: 640px)  { content: "640px"; } 
-  @media (min-width: 800px)  { content: "800px"; } 
-  @media (min-width: 960px)  { content: "960px"; } 
-  @media (min-width: 1120px)  { content: "1120px"; } 
-  @media (min-width: 1280px)  { content: "1280px"; } 
-  @media (min-width: 1440px)  { content: "1440px"; } 
-  @media (min-width: 1600px)  { content: "1600px"; } 
-  @media (min-width: 1760px)  { content: "1760px"; } 
-} */
+  right: 0; }
+
+.toggle a {
+  color: transparent;
+  width: 2*$ratio;
+  height: 2*$ratio;
+  &:before {
+      font-family: $icons;
+      content: "\f04c";
+      color: #000;
+      display: block;
+      text-align: center;
+      line-height: 1*$ratio;
+      font-size: 2em; } }
+
+:target .on, .off  { display: none; }
+:target .off, .on  { display: block; } }
+
 
 /***********/
 /* LICENSE */
@@ -33,27 +48,6 @@ body:before {
    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-/*****************/
-/* WHAT IS THIS? */
-/*****************/
-
-/* debugCSS is meant to be loaded on an existing page to highlight potentially
-   broken, malformed or legacy (X)HTML.  Not all "errors" are created equally,
-   so they are color coded to highlight severity.  Green is "probably not a big
-   problem", yellow is "worth looking at" and red is "you really should fix
-   this."  Red severity is currently not used, but can be made available for
-   future revisions.
-
-   Red: #FF8888;
-   Yellow: #FFFF88;
-   Green: #88FF88;
-*/
-
-/******************/
-/* ERROR MESSAGES */
-/******************/
-
-/* All errors should try to post a message explaining the problem. */
 table:not([summary]):after,
 table > tr:after,
 table th:not([scope]):after,
@@ -294,15 +288,6 @@ marquee:after {
   content: 'Should you be using STRONG or EM?';
 }
 
-/******************/
-/* ERROR OUTLINES */
-/******************/
-
-/* In addition to printing the error message next to the element, outline the
-   element so it's easy to spot.  Use outline instead of border to avoid
-   messing with the document flow.
-*/
-
 table:not([summary]),
 table th:not([scope]),
 table thead td,
@@ -363,14 +348,6 @@ marquee {
   outline: 5px solid #FFFF88;
 }
 
-/*********/
-/* EXTRA */
-/*********/
-
-/* Stuff that helps in developing / debugging, but don't quite fit anywhere
-   else.
-*/
-
 body > img:only-child {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAgMAAAAOFJJnAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAlQTFRF/+Pj2tra2dnZ4Z9gVgAAAHxJREFUGBkFwUGKxDAQBDB9shqcuw2T/3TAc5+A95UruZv+IoNqvEWCavLFDB2M5vPgGpyFNOcB80cPJMxgHhLkQ4IxuBorpDA3Y+MazEfC2+gwgnOxHnSogb15F1JcGxmkcBb1AwlVqCIHadZGwt+NGmQhD1lIuB+scOUfnCk3BP0u5SsAAAAASUVORK5CYII=);
   border: 50px solid rgba(0, 0, 0, 0.08);
@@ -379,29 +356,3 @@ body > img:only-child {
   margin: 1em auto;
   padding: 0;
 }
-
-
-
-
-/*
-body:before {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 4;
-  background: #000;
-  color: #fff;
-  padding: $ratio/4;
-  @media (min-width: 320px)  { content: "320px"; } 
-  @media (min-width: 480px)  { content: "480px"; } 
-  @media (min-width: 640px)  { content: "640px"; } 
-  @media (min-width: 800px)  { content: "800px"; } 
-  @media (min-width: 960px)  { content: "960px"; } 
-  @media (min-width: 1120px)  { content: "1120px"; } 
-  @media (min-width: 1280px)  { content: "1280px"; } 
-  @media (min-width: 1440px)  { content: "1440px"; } 
-  @media (min-width: 1600px)  { content: "1600px"; } 
-  @media (min-width: 1760px)  { content: "1760px"; } 
-} */
