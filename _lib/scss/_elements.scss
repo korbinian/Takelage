@@ -1,26 +1,22 @@
-article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
-audio, canvas, video { display: inline-block; }
-* { @include box-sizing(border-box); }
-
-::selection, ::-moz-selection { 
-  text-shadow: none;
-  background: $black;
-  color: $white;  }
-
-@import "fonts/fontawesome";
+/* TYPOGRAPHY
+----------------------------------------------------------------------------- */
 
 html {
-  font-size: 12px;
   -webkit-text-size-adjust: 100%; 
-  -ms-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
   overflow-y: scroll;
   -ms-word-break: break-all;
   word-break: break-all;
   word-break: break-word;
   -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  hyphens: auto; }
-
+     -moz-hyphens: auto;
+          hyphens: auto;
+  font-size: 12px;
+  @media (min-width: 960px)  { font-size: 12px; font-size: 1.2vw; } 
+  @media (min-width: 1040px) { font-size: 13px; } 
+  @media (min-width: 1120px) { font-size: 14px; } 
+  @media (min-width: 1200px) { font-size: 15px; } 
+  @media (min-width: 1280px) { font-size: 16px; } }
 
 body { 
   margin: 0;
@@ -40,7 +36,6 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   @include f(16,24,12);
-  font-weight: light;
   text-rendering: optimizelegibility; }
 
 hgroup { 
@@ -49,27 +44,27 @@ hgroup {
 /* Links
 ----------------------------------------------------------------------------- */
 
-a                 { 
-                    cursor: pointer;
-                    color: $black;
-                    text-decoration: none;
-                    word-wrap: break-word;
-                    position: relative;
-                    @include transition(); }
-a:visited         { color: $color-primary; }
-a:active          { top: 1px; }
-a:focus           { outline: 2px solid $black !important;
-                    outline: 5px auto -webkit-focus-ring-color;
-                    @include transition();
-                    outline-offset: -2px; }
-a:hover, a:active { color: $color-secondary;
-                    @include transition(); }
-a:before, a:after { color: $color-secondary; }
-
-
-#header a {
-  display: block; }
-
+a { 
+  cursor: pointer;
+  color: $black;
+  text-decoration: none;
+  word-wrap: break-word;
+  position: relative;
+  @include transition(); }
+a:visited { 
+  color: $color-primary; }
+a:active { 
+  top: 1px; }
+a:focus { 
+  outline: 2px solid $black !important;
+  outline: 5px auto -webkit-focus-ring-color;
+  @include transition();
+  outline-offset: -2px; }
+a:hover, a:active { 
+  color: $color-secondary;
+  @include transition(); }
+a:before, a:after { 
+  color: $color-secondary; }
 #content a {
     &:after {
       line-height: 0;
@@ -90,47 +85,40 @@ a:before, a:after { color: $color-secondary; }
 
 }
  
-/* Text Elements
+/* Lists
 ----------------------------------------------------------------------------- */
 
-p, ul, ol, dl         { @include fm(24); }
-
-ul, ol, dl            { padding: 0; float: left; width: 100%; }
-ul ul, ol ol, dl dl   { @include fm(0); }
-ul li, ol li          { margin-left: $ratio; }
-ul li                 { list-style: disc outside; }
-ol li                 { list-style: outside decimal; }
-dl dt                 { font-weight: bold; }
-dl dd                 { @include fm(24); margin-left: $ratio;}
-
-nav ul, nav ol, .nav li, nav ol {
+ul, ol, dl { 
+  padding: 0;
   margin: 0;
-  float: left;
-  width: 100%; }
-nav ul li {
-  list-style: none;
-  margin: 0; }
+  @extend .group; }
 
-aside, footer, header {
-  ul, ol {
-    margin: 0;
-    li {
-      list-style: none;
-      margin: 0; } } }
+ul ul, ol ol, dl dl { 
+  @include fm(0); }
+
+li { 
+  margin: 0; 
+  list-style: none; }
+
+dd { 
+  @include fm(24); }
+
+nav ul, nav ol {
+  margin: 0;
+  @extend .group; }
 
 #content {
   ul, ol {
+    @include fm(24);
     > li {
-      margin: 0;
       position: relative;
-      list-style: none;
       li {
         margin-left: $ratio; } } } }
 
 #content {
   ul {
     > li {
-      *list-style: disc;
+      *list-style: disc outside;
       &:before {
         content: "›";
         position: absolute;
@@ -142,7 +130,7 @@ aside, footer, header {
   ol {
     counter-reset: li;
     > li {
-      *list-style: decimal;
+      *list-style: decimal outside;
       &:before {
         content: counter(li);
         counter-increment: li;
@@ -151,6 +139,11 @@ aside, footer, header {
         left: -$ratio;
         width: $ratio;
         text-align: center; } } } }
+
+/* Text Styles
+----------------------------------------------------------------------------- */
+
+p {  @include fm(24); }
 
 b, strong, mark { font-weight: bold; }
 em, i { font-style: italic; }
@@ -188,7 +181,9 @@ hr {
 /* Embedded content
 ----------------------------------------------------------------------------- */
 
-img, embed, object, video { max-width: 100% !important; _width: 100%; }
+img, embed, object, video { 
+  max-width: 100% !important; 
+  _width: 100%; }
 img { 
   -webkit-filter: saturate(95%);
   @include transition();
@@ -202,12 +197,7 @@ img {
     @include transition(); } }
 
 .entry img {
-  margin: 0 $ratio $ratio 0;
-  &.left {
-    float: left; }
-  &.right { 
-    float: right; 
-    margin: 0 0 $ratio $ratio; } }
+  margin: 0 $ratio $ratio 0; }
 
 svg:not(:root) { overflow: hidden; }
 

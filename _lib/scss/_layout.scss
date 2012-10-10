@@ -1,35 +1,26 @@
 /* LAYOUT
 ----------------------------------------------------------------------------- */
 
-html {
-  @media (min-width: 960px)  { font-size: 12px; font-size: 1.2vw; } 
-  @media (min-width: 1040px) { font-size: 13px; } 
-  @media (min-width: 1120px) { font-size: 14px; } 
-  @media (min-width: 1200px) { font-size: 15px; } 
-  @media (min-width: 1280px) { font-size: 16px; } }
-
 .row {
   position: relative;
   @media (max-width: 720px)  { max-width: 100%; }  
   @media (min-width: 720px)  { @include col(12); }  
   @media (min-width: 960px)  { @include shift(4); } }
 
-#header, #main, #sub, #footer { @include clearfix(); }
+/* Header
+----------------------------------------------------------------------------- */
 
-
-#sub {
-  background: lighten($color-secondary, 20%);
-  color: $white; }
-
-#footer {
-  background: $color-secondary;
-  color :$white; }
+#header {
+  @extend .clearfix;
+}
 
 /* Main
 ----------------------------------------------------------------------------- */
 
 #main {
-  #content {
+  @extend .clearfix; }
+
+#content {
     @extend .group;
     @include box();
     @media (min-width: 720px) { @include col(8); }
@@ -57,12 +48,13 @@ html {
           float: left;
           margin-left: -4*$unit;
           a { text-align: right; } } } } }
-  #aside {
+
+#aside {
     @include box();
     @extend .group;
     @include col(4);
     @media (max-width: 720px) { 
-      width: 100%; } } }
+      width: 100%; } }
 
 /* Full-width
 ----------------------------------------------------------------------------- */
@@ -73,6 +65,10 @@ body.fullwidth #main #content{
 /* Sub
 ----------------------------------------------------------------------------- */
 
+#sub {
+  background: lighten($color-secondary, 20%);
+  color: $white;
+  @extend .clearfix }
 
 #sub .col { 
   padding: $ratio/2;
@@ -83,8 +79,14 @@ body.fullwidth #main #content{
 /* Footer
 ----------------------------------------------------------------------------- */
 
-#footer .row {
-  padding: $ratio; }
+#footer {
+  background: $color-secondary;
+  color: $white;
+  @extend .clearfix;
+  a { 
+    color:$color-primary; }
+  .row {
+    padding: $ratio; } }
 
 .nav-footer {
   li {
