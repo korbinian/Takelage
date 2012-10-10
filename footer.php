@@ -19,7 +19,6 @@
 
 			<p class="footer-text"><?php echo of_get_option('footer_text', ''); ?></p>
 
-
 			<small>
 				Code <span class="amp">&</span> Design based on the <a href="https://github.com/korbinian/Takelage">Takelage Theme</a> 
 				&mdash; <a href="http://creativecommons.org/licenses/by-sa/3.0/"><abbr>CC BY-SA 3.0</abbr></a> 

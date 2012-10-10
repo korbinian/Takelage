@@ -6,11 +6,19 @@
 
 /* Add Theme Options
 ------------------------------------------------------------------------------*/
- 
+
+
+
 if ( !function_exists( 'optionsframework_init' ) ) {
 	define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/_lib/settings/' );
 	require_once dirname( __FILE__ ) . '/_lib/settings/options-framework.php';
 }
+
+/*
+
+if ( is_admin() && is_readable( get_template_directory() . '/_lib/inc/theme-options.php' ) )
+	require_once( get_template_directory() . '/_lib/inc/theme-options.php' ); */
+
 
 /* Add Code Highlighting Library
 ------------------------------------------------------------------------------*/
@@ -190,8 +198,6 @@ function Takelage_add_custom_styles() {
 
 	<?php
 }
-
-
 
 /*	Remove 'text/css' from our enqueued stylesheet
 ------------------------------------------------------------------------------*/

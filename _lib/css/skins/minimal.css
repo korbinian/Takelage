@@ -158,32 +158,81 @@
 
 @font-face { font-family: Vollkorn; src: url("../fonts/Vollkorn/Vollkorn-BoldItalic-webfont.eot"); src: url("../fonts/Vollkorn/Vollkorn-BoldItalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Vollkorn/Vollkorn-BoldItalic-webfont.woff") format("woff"), url("../fonts/Vollkorn/Vollkorn-BoldItalic-webfont.ttf") format("truetype"), url("../fonts/Vollkorn/Vollkorn-BoldItalic-webfont.svg#Vollkorn") format("svg"); font-weight: bold; font-style: italic; }
 
-body { background: black; }
+/*
+body {
+	background: darken($color-secondary, 5%);
+} */
+/*
+#header, #main {
+	background: $white;
+}
 
-#header, #main { background: white; }
+a, .bigtext {
+	font-weight: bold;
+}
 
-a, .bigtext { font-weight: bold; }
 
-body { -webkit-mask-image: url(../images/mask.png); }
 
-.toggle { display: none !important; }
 
-.cta span { text-transform: uppercase; }
+body {
+	-webkit-mask-image: url(../images/mask.png); }
 
-.cta { font-weight: bold; }
 
-::-moz-selection { color: white; background: black; }
 
-::selection { color: white; background: black; }
+.toggle {
+	display: none !important;
+}
 
-a { color: black; }
 
-#sub { background: black; color: #fff; }
-#sub a { color: #fff; }
+.cta span {
+	text-transform: uppercase;
+}
 
-#footer { background: black; color: white; }
-#footer a { color: #fff; }
+.cta { font-weight: bold;
+}
 
-#anchors { background: #eee; float: right; margin: -0.75em 0 0.75em 0.75em; padding: 0.75em; max-width: 20em; }
-#anchors a { display: block; }
-#anchors a:hover { cursor: pointer; }
+
+::-moz-selection { 
+	color:invert($color-selection);
+	background: $color-selection; }
+::selection { 
+	color:invert($color-selection);
+	background: $color-selection; }
+
+a {
+	color: $black;
+}
+
+
+
+#sub {
+	background: $color-secondary;
+	color: #fff;
+	a {
+		color: #fff;
+	}
+}
+
+#footer {
+	background: darken($color-secondary, 10%);
+	color: $white;
+	a {
+		color: #fff;
+	}
+}
+
+
+
+#anchors {
+	background: #eee;
+	float: right;
+	margin: -$ratio/2 0 $ratio/2 $ratio/2;
+	@include box();
+	max-width: 4*$unit;
+	a {
+		display: block;
+		&:hover {
+			cursor: pointer;
+	}
+}
+}*/
