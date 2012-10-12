@@ -1,20 +1,18 @@
 
 	<div class="newslist">
-	<h1 class="xl">News</h1>
 
 	<?php
-$args = array(
-   'posts_per_page' => 3,
-   'post_type' => array( 'post', 'feature' )
-);
-?>
+    $args = array(
+      'posts_per_page' => 3,
+      'post_type' => array( 'post' )
+    );
+  ?>
 
   <ul>
-<?php
-$query = new WP_Query($args);
-while ( $query->have_posts() ) : $query->the_post();
-
-?>
+  <?php
+    $query = new WP_Query($args);
+    while ( $query->have_posts() ) : $query->the_post();
+  ?>
 
 <li>
 	<h2 class="l"><span><a href="<?php the_permalink() ?>">

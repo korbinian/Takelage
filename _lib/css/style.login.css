@@ -1,9 +1,3 @@
-.hidden { position: absolute; font: 0/0 a; color: transparent; text-shadow: none; background-color: transparent; border: 0; }
-
-.skin { display: block; padding: 0.75em; }
-
-.group { float: left; width: 100%; }
-
 @font-face { font-family: OpenSans; src: url("../fonts/OpenSans/OpenSans-Light-webfont.eot"); src: url("../fonts/OpenSans/OpenSans-Light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans/OpenSans-Light-webfont.woff") format("woff"), url("../fonts/OpenSans/OpenSans-Light-webfont.ttf") format("truetype"), url("../fonts/OpenSans/OpenSans-Light-webfont.svg#OpenSans") format("svg"); font-weight: light; font-style: normal; }
 
 @font-face { font-family: OpenSans; src: url("../fonts/OpenSans/OpenSans-LightItalic-webfont.eot"); src: url("../fonts/OpenSans/OpenSans-LightItalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans/OpenSans-LightItalic-webfont.woff") format("woff"), url("../fonts/OpenSans/OpenSans-LightItalic-webfont.ttf") format("truetype"), url("../fonts/OpenSans/OpenSans-LightItalic-webfont.svg#OpenSans") format("svg"); font-weight: light; font-style: italic; }

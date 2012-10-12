@@ -6,9 +6,8 @@
     -webkit-linear-gradient(left, rgba(0,0,0,.5), transparent 1px),
     -webkit-linear-gradient(left, rgba(0,0,0,.5), transparent 1px),
     -webkit-linear-gradient(left, rgba(0,0,0,.1), transparent 1px),
-    -webkit-linear-gradient(left, rgba(0,0,0,.1), transparent 1px),
-    -webkit-linear-gradient(top,  rgba(0,0,0,.1), transparent 1px);
-  background-size: $unit, $unit, $unit, $unit, $unit, $ratio;
+    -webkit-linear-gradient(left, rgba(0,0,0,.1), transparent 1px);
+  background-size: $unit, $unit, $unit, $unit, $unit;
   background-position: 0 0, $ratio/2 0, -$ratio/2 0, $ratio 0, -$ratio 0; }
 
 @media screen and (min-width:720px) { 

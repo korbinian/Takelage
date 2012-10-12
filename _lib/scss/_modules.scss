@@ -25,20 +25,21 @@
 	color: $white; }
 #nav {
   position: absolute;
-  top: 0;
-  padding-top: 2*$ratio;
   z-index: 999;
   width: 100%;
   background: $black;
+  top: -10em;
   .sub-menu { 
     display: none; }
   a {
+  	display: block;
   	color: $white;
     overflow: hidden;
     height: 0;
     line-height: 0;
     padding: 0 $ratio/2; }
   &:target {
+  	top: 0;
     z-index: 1005;
     a {
       line-height: 2*$ratio;
@@ -98,11 +99,12 @@ ul.skiplinks {
     position: absolute;
     top: $ratio/2;
     height: $unit;
+    left: $ratio/2;
     @include col(1); }
   hgroup {
     margin: $ratio 0 $ratio 0;
     @include shift(1);
-    padding-left: $ratio/2;
+    padding-left: $ratio;
     a {
     	display: inline-block !important;
     	border: 0 solid; } } }
@@ -180,8 +182,6 @@ ul.skiplinks {
   		float: left;
   		margin-right: 2px;
   		a {
-  			background: $black;
-  			color: $white;
   			border: 0 solid;
   			display: block;
   			@include box();
@@ -216,7 +216,6 @@ ul.skiplinks {
 	}
 }
 .nav-main {
-  
   li {
     float: left;
     width: auto;
@@ -336,19 +335,49 @@ ul.skiplinks {
 ------------------------------------------------------------------------------*/
 
 #nav-top {
-	@include box();
   a:after { font-family: $icons; }
   @media (min-width: 960px) { 
     float: left;
-    width: $unit;
+    padding:0;
+    @include col(1);
     text-align: right;
-    margin-left: -$unit !important;
-    padding: 0 $ratio/2;
-    @include f(26,36,24);
+    height: $ratio;
+    margin-top: $ratio;
+    margin-left: -$unit - $ratio;
+    span { font-size: 2rem;}
     a { display: inline-block; } } }
 
 .nav-previous a:after { content:"\f060"; }
 .nav-next a:after     { content: "\f061"; }
+
+/* Posted on
+------------------------------------------------------------------------------*/
+
+.date {
+	a {
+		color: $black;
+	}
+	div {
+		display: inline;
+	}
+	@media (min-width: 960px) { 
+		@include col(1);
+		@include box();
+		margin-left: -$unit - 1.5*$ratio;
+		text-align: center;
+			.day {
+				font-weight: bold;
+				font-size: 2rem;
+			}
+			.month {
+				font-size: 1em;
+			}
+			.year {
+				font-size: 1em;
+				line-height: 1;
+			}
+		}
+}
 
 /* Edit Link
 ------------------------------------------------------------------------------*/

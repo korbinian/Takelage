@@ -652,11 +652,22 @@ endif;
 
 if ( ! function_exists( 'Takelage_posted_on' ) ) :
 function Takelage_posted_on() {
-	printf( __( '<a href="%1$s" title="%2$s" rel="bookmark" class="meta"><time class="entry-date updated s" datetime="%3$s" pubdate>%4$s</time></a><span class="byline"> </span>', 'Takelage' ),
+	printf( __( '
+		<div class="date">
+			<a href="%1$s" title="%2$s" rel="bookmark" class="meta">
+				<time class="entry-date updated s" datetime="%3$s" pubdate>
+					<div class="day">%4$s</div>
+					<div class="month">%5$s</div>
+					<div class="year">%6$s</div>
+				</time></a>
+				<span class="byline"> </span>
+		</div>', 'Takelage' ),
 		esc_url( get_permalink() ),
 		esc_attr( get_the_time() ),
 		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() )
+		esc_html( get_the_date( 'j' ) ),
+		esc_html( get_the_date( 'M' ) ),
+		esc_html( get_the_date( 'Y' ) )
 	);
 }
 endif;

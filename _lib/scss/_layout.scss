@@ -27,15 +27,18 @@
     article {
       @include box();
       .nav-sub { 
-        padding: 0;
-        margin: 0 0 $ratio 0;  
+        margin-top: -$ratio !important;
+        ul {
+          margin: 0 0 0 0;
+        }
         li {
           margin: 0;
-          float: left; 
-          width: 100%;
+
           @media (min-width: 960px) { text-align: right; }
           a { 
-            padding: 0; }
+            float: right;
+            display: inline;
+            @include box(); }
           li { margin: 0 !important; 
             a { 
               font-weight: normal; } } }

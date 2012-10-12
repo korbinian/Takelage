@@ -1,4 +1,29 @@
+@import "setup";
 @import "fonts";
+
+#main {
+	background: $color-primary;
+}
+
+#content {
+	background: #fff;
+	margin-top: -$ratio/2;
+	margin-bottom: 2*$ratio;
+}
+
+.nav-sub  a {
+	background: #fff;
+}
+
+.date {
+	background: #fff;
+}
+
+
+#anchors {
+	background: $orange;
+}
+
 /*
 .logo, .nav-main a, .nav-meta a, .bigtext, h1, h2, h3, h4, h5, #footer, #sub{
 	-webkit-mask-image: url(../../images/mask.png); } */
